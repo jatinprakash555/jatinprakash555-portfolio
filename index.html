@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jatin Prakash Behera - Developer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0B1120;
+            position: relative;
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(125deg, #0B1120, #111827, #1e3a8a, #22d3ee, #0B1120);
+            background-size: 400% 400%;
+            animation: gradientAnimation 25s ease infinite;
+            z-index: -1;
+        }
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #22d3ee, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .section-content {
+            position: relative;
+            z-index: 1;
+        }
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease;
+        }
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Chatbot Styles */
+        #chat-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 100;
+        }
+        #chat-window {
+            position: fixed;
+            bottom: 6rem;
+            right: 2rem;
+            width: 90%;
+            max-width: 380px;
+            height: 500px;
+            transform: translateY(20px) scale(0.95);
+            opacity: 0;
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+            pointer-events: none;
+            z-index: 99;
+        }
+        #chat-window.visible {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+            pointer-events: auto;
+        }
+        /* Skill Rotator Styles */
+        #skill-rotator {
+            transition: opacity 0.5s ease-in-out;
+        }
+        .skill-icon-container {
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0) 70%);
+        }
+        .skill-icon-container svg {
+            width: 80px;
+            height: 80px;
+            color: #3b82f6;
+        }
+    </style>
+</head>
+<body class="text-gray-200 antialiased">
+
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 bg-[#0B1120]/80 backdrop-blur-sm transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white">JPB</a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="hover:text-blue-400 transition-colors">About</a>
+                <a href="#projects" class="hover:text-blue-400 transition-colors">Projects</a>
+                <a href="#skills" class="hover:text-blue-400 transition-colors">Skills</a>
+                <a href="journal.html" class="hover:text-blue-400 transition-colors">Journal</a>
+                <a href="#contact" class="hover:text-blue-400 transition-colors">Contact</a>
+            </nav>
+            <a href="#contact" class="hidden md:inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-transform duration-300 hover:scale-105">
+                Contact Me
+            </a>
+            <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-300 hover:bg-gray-800">
+                <i data-lucide="menu" class="h-6 w-6"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="#about" class="block py-2 hover:text-blue-400">About</a>
+            <a href="#projects" class="block py-2 hover:text-blue-400">Projects</a>
+            <a href="#skills" class="block py-2 hover:text-blue-400">Skills</a>
+            <a href="journal.html" class="block py-2 hover:text-blue-400">Journal</a>
+            <a href="#contact" class="block py-2 hover:text-blue-400">Contact</a>
+            <a href="#contact" class="block mt-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg text-center">Contact Me</a>
+        </div>
+    </header>
+
+    <main class="pt-24 section-content">
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-screen flex items-center relative">
+            <div class="container mx-auto px-6 text-center">
+                <div class="relative inline-block">
+                    <img src="profile-avatar.png" alt="Jatin Prakash Behera" class="rounded-full w-40 h-40 object-cover mx-auto mb-6 border-4 border-blue-500 shadow-lg">
+                     <div class="absolute bottom-2 right-2 bg-green-500 rounded-full w-6 h-6 border-2 border-[#0B1120]" title="Open to opportunities"></div>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Jatin Prakash Behera</h1>
+                <p class="text-xl md:text-2xl gradient-text mb-8">BSc ITM Student & Aspiring Developer</p>
+                <p class="max-w-3xl mx-auto text-gray-400 mb-10">
+                    I am a passionate and driven Information Technology student at Ravenshaw University, eager to apply my skills to build innovative web solutions.
+                </p>
+                <div class="flex justify-center items-center space-x-4">
+                    <a href="#projects" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition-transform duration-300 hover:scale-105">
+                        View My Work
+                    </a>
+                    <a href="https://github.com/jatinprakash555" target="_blank" class="text-gray-300 hover:text-white p-3 rounded-full bg-gray-800 hover:bg-gray-700 transition-all duration-300">
+                        <i data-lucide="github" class="h-6 w-6"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/jatin-prakash-0686a1327" target="_blank" class="text-gray-300 hover:text-white p-3 rounded-full bg-gray-800 hover:bg-gray-700 transition-all duration-300">
+                        <i data-lucide="linkedin" class="h-6 w-6"></i>
+                    </a>
+                     <a href="https://twitter.com/jatinprakashb5" target="_blank" class="text-gray-300 hover:text-white p-3 rounded-full bg-gray-800 hover:bg-gray-700 transition-all duration-300">
+                        <i data-lucide="twitter" class="h-6 w-6"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 scroll-animate">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-12 gradient-text">About Me</h2>
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/3 h-80">
+                        <div class="relative group h-full">
+                            <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                            <img src="profile-avatar.png" alt="Jatin Prakash Behera's Avatar" class="relative rounded-lg shadow-2xl w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <div class="md:w-2/3">
+                        <p class="text-lg text-gray-400 mb-4">
+                            Hello! I'm Jatin, a BSc ITM student at Ravenshaw University in Odisha. My journey into the world of technology is driven by a deep curiosity and a passion for creating meaningful and user-friendly digital experiences.
+                        </p>
+                        <p class="text-lg text-gray-400 mb-6">
+                            I am building a strong foundation in web development, focusing on technologies like the MERN stack. I'm always excited to learn new things and tackle challenging problems. I believe in writing clean, efficient code and am dedicated to the principles of user-centric design.
+                        </p>
+                        <a href="/path-to-your-cv.pdf" download class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-transform duration-300 hover:scale-105">
+                            <i data-lucide="download" class="h-5 w-5"></i>
+                            Download CV
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 scroll-animate">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-12 gradient-text">Featured Projects</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project Card 1 -->
+                    <div class="project-card rounded-lg overflow-hidden shadow-lg p-6">
+                        <h3 class="text-xl font-bold mb-2 text-white">The Coding Companion (TCC)</h3>
+                        <p class="text-gray-400 mb-4">A collaborative platform for students to share coding resources, manage projects, and connect with peers.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-900/50 text-blue-300 text-xs font-semibold px-2.5 py-1 rounded-full">React</span>
+                            <span class="bg-blue-900/50 text-blue-300 text-xs font-semibold px-2.5 py-1 rounded-full">Node.js</span>
+                            <span class="bg-blue-900/50 text-blue-300 text-xs font-semibold px-2.5 py-1 rounded-full">MongoDB</span>
+                        </div>
+                        <div class="flex space-x-4 mt-auto">
+                            <a href="https://jatinprakash555.github.io/" target="_blank" class="text-blue-400 hover:text-blue-300 font-semibold">Live Demo</a>
+                            <a href="https://github.com/jatinprakash555/tcc-project" target="_blank" class="text-blue-400 hover:text-blue-300 font-semibold">Source Code</a>
+                        </div>
+                    </div>
+                    <!-- Project Card 2 -->
+                    <div class="project-card rounded-lg overflow-hidden shadow-lg p-6">
+                        <h3 class="text-xl font-bold mb-2 text-white">Multi-Model Canvas</h3>
+                        <p class="text-gray-400 mb-4">A real-time, collaborative whiteboard application that supports various inputs like text, drawings, and images.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-900/50 text-blue-300 text-xs font-semibold px-2.5 py-1 rounded-full">JavaScript</span>
+                            <span class="bg-blue-900/50 text-blue-300 text-xs font-semibold px-2.5 py-1 rounded-full">Firebase</span>
+                            <span class="bg-blue-900/50 text-blue-300 text-xs font-semibold px-2.5 py-1 rounded-full">Canvas API</span>
+                        </div>
+                        <div class="flex space-x-4 mt-auto">
+                            <a href="#" class="text-blue-400 hover:text-blue-300 font-semibold">Live Demo</a>
+                            <a href="#" class="text-blue-400 hover:text-blue-300 font-semibold">Source Code</a>
+                        </div>
+                    </div>
+                    <!-- Project Card 3 -->
+                    <div class="project-card rounded-lg overflow-hidden shadow-lg p-6">
+                        <h3 class="text-xl font-bold mb-2 text-white">Cloud Catcher Game</h3>
+                        <p class="text-gray-400 mb-4">An interactive retro-style game built with HTML5 Canvas and JavaScript. Catch stars and clouds, but watch out for lightning!</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-900/50 text-blue-300 text-xs font-semibold px-2.5 py-1 rounded-full">HTML5</span>
+                            <span class="bg-blue-900/50 text-blue-300 text-xs font-semibold px-2.5 py-1 rounded-full">Canvas API</span>
+                            <span class="bg-blue-900/50 text-blue-300 text-xs font-semibold px-2.5 py-1 rounded-full">JavaScript</span>
+                        </div>
+                        <div class="flex space-x-4 mt-auto">
+                            <a href="https://jatinprakash555.github.io/jattinprakash555-cloudcatchergame/" target="_blank" class="text-blue-400 hover:text-blue-300 font-semibold">Play Game</a>
+                            <a href="https://github.com/jatinprakash555/jattinprakash555-cloudcatchergame" target="_blank" class="text-blue-400 hover:text-blue-300 font-semibold">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 scroll-animate">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-12 gradient-text">My Tech Stack</h2>
+                <div id="skill-rotator" class="flex flex-col items-center justify-center h-48 opacity-0">
+                    <div id="skill-icon-container" class="skill-icon-container p-8 rounded-full mb-4">
+                        <!-- SVG will be injected here -->
+                    </div>
+                    <p id="skill-name" class="text-2xl font-bold"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 scroll-animate">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-4 gradient-text">Get In Touch</h2>
+                <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">I'm currently open to internship and freelance opportunities. Have a project in mind or just want to connect? Let's talk!</p>
+                <div class="max-w-xl mx-auto">
+                    <form action="https://formsubmit.co/jatinprakashb5@gmail.com" method="POST" class="space-y-6">
+                        <!-- FormSubmit hidden inputs for configuration -->
+                        <input type="hidden" name="_subject" value="New Portfolio Contact Form Submission!">
+                        <input type="text" name="_honey" style="display:none"> <!-- Anti-spam -->
+                        
+                        <div class="flex flex-col md:flex-row gap-6">
+                            <div class="w-full"><label for="name" class="sr-only">Name</label><input type="text" id="name" name="name" placeholder="Your Name" required class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"></div>
+                            <div class="w-full"><label for="email" class="sr-only">Email</label><input type="email" id="email" name="email" placeholder="Your Email" required class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"></div>
+                        </div>
+                        <div><label for="message" class="sr-only">Message</label><textarea id="message" name="message" rows="5" placeholder="Your Message" required class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea></div>
+                        <div class="text-center"><button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition-transform duration-300 hover:scale-105 w-full md:w-auto">Send Message</button></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#0B1120] py-8">
+        <div class="container mx-auto px-6 text-center text-gray-500">
+            <div class="flex justify-center space-x-4 mb-4">
+                <a href="https://github.com/jatinprakash555" target="_blank" class="hover:text-white"><i data-lucide="github" class="h-6 w-6"></i></a>
+                <a href="https://www.linkedin.com/in/jatin-prakash-0686a1327" target="_blank" class="hover:text-white"><i data-lucide="linkedin" class="h-6 w-6"></i></a>
+                <a href="https://twitter.com/jatinprakashb5" target="_blank" class="hover:text-white"><i data-lucide="twitter" class="h-6 w-6"></i></a>
+            </div>
+            <p>&copy; 2024 Jatin Prakash Behera. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <button id="chat-toggle" class="bg-blue-600 hover:bg-blue-700 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg transition-transform duration-300 hover:scale-110">
+        <i data-lucide="message-circle" class="h-8 w-8"></i>
+    </button>
+
+    <div id="chat-window" class="bg-gray-800/90 backdrop-blur-md rounded-lg shadow-2xl flex flex-col overflow-hidden">
+        <div class="p-4 bg-gray-900 text-white font-semibold">Chat with Jatin's Bot</div>
+        <div id="chat-log" class="flex-1 p-4 space-y-4 overflow-y-auto">
+            <!-- Bot Welcome Message -->
+            <div class="flex">
+                <div class="bg-blue-600 text-white p-3 rounded-lg max-w-xs">
+                    <p>Hi there! How can I help you navigate Jatin's portfolio?</p>
+                </div>
+            </div>
+        </div>
+        <div class="p-4 bg-gray-900/50 border-t border-gray-700">
+            <form id="chat-form" class="flex items-center space-x-2">
+                <input type="text" id="chat-input" placeholder="Ask about projects, skills..." class="flex-1 bg-gray-700 border border-gray-600 rounded-full py-2 px-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-full"><i data-lucide="send" class="h-5 w-5"></i></button>
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+        lucide.createIcons();
+
+        // --- Mobile Menu Toggle ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = mobileMenuButton.querySelector('i');
+            icon.setAttribute('data-lucide', mobileMenu.classList.contains('hidden') ? 'menu' : 'x');
+            lucide.createIcons();
+        });
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenuButton.querySelector('i').setAttribute('data-lucide', 'menu');
+                lucide.createIcons();
+            });
+        });
+
+        // --- 3D Tilt Effect for Project Cards ---
+        const cards = document.querySelectorAll('.project-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const { width, height } = rect;
+                const rotateX = (y / height - 0.5) * -15; // Max 15deg rotation
+                const rotateY = (x / width - 0.5) * 15;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+            });
+        });
+
+        // --- Scroll Animations ---
+        const animatedElements = document.querySelectorAll('.scroll-animate');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        animatedElements.forEach(el => observer.observe(el));
+        
+        // --- Skill Rotator ---
+        const skills = [
+            { name: 'JavaScript', svg: `<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>JavaScript</title><path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.82-2.28-1.924-3.212l-2.39-2.02c-.39-.323-.598-.78-.598-1.254 0-.522.24-1.012.65-1.335l1.532-1.19c.45-.352.72-.882.72-1.442 0-.57-.27-1.11-.72-1.452l-1.532-1.19c-.41-.323-.65-.813-.65-1.335 0-.474.208-.93.598-1.254l2.39-2.02c1.104-.932 1.75-2.117 1.924-3.212H1.966c.175 1.095.82 2.28 1.924 3.212l2.39 2.02c.39.323.598.78.598 1.254 0 .522-.24 1.012-.65 1.335l-1.532 1.19c-.45.352-.72.882-.72 1.442 0 .57.27 1.11.72 1.452l1.532 1.19c.41.323.65.813-.65 1.335 0 .474-.208.93-.598 1.254l-2.39 2.02C2.786 21.72 2.14 22.905 1.966 24h20.068c-.175-1.095-.82-2.28-1.924-3.212l-2.39-2.02c-.39-.323-.598-.78-.598-1.254 0-.522.24-1.012.65-1.335l1.532-1.19c.45-.352.72-.882.72-1.442 0-.57-.27-1.11-.72-1.452l-1.532-1.19c-.41-.323-.65-.813-.65-1.335 0-.474.208-.93.598-1.254l2.39-2.02c1.104-.932 1.75-2.117 1.924-3.212H22.034v18.276z" fill="currentColor"/></svg>` },
+            { name: 'React', svg: `<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>React</title><path d="M12.001 2.002c-5.522 0-10 4.477-10 10s4.478 10 10 10 10-4.477 10-10-4.478-10-10-10zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1.08-3.932c.328.328.758.508 1.212.508s.884-.18 1.212-.508c.672-.672.672-1.76 0-2.432l-1.212-1.212 1.212-1.212c.672-.672.672-1.76 0-2.432s-1.76-.672-2.432 0l-1.212 1.212-1.212-1.212c-.672-.672-1.76-.672-2.432 0s-.672 1.76 0 2.432l1.212 1.212-1.212 1.212c-.672.672-.672 1.76 0 2.432s1.76.672 2.432 0l1.212-1.212 1.212 1.212z" fill="currentColor"/></svg>` },
+            { name: 'Node.js', svg: `<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Node.js</title><path d="M11.88 16.273c0 .52-.04 1.02-.119 1.499l-2.234-1.31c-.02-.02-.04-.02-.06-.04.02-.159.04-.319.04-.479 0-.52.04-1.02.119-1.499l2.234 1.31c.02.02.04.02.06.04a1.86 1.86 0 0 1-.04.479zm-1.057 3.758c-.52 0-1.02-.04-1.499-.119l1.31-2.234c.02-.02.02-.04.04-.06.159.02.319.04.479.04.52 0 1.02-.04 1.499-.119l-1.31 2.234c-.02.02-.04.04-.06.06a1.86 1.86 0 0 1-.459.04zm-2.693-1.017l-2.234 1.31c.02.52.08.998.159 1.478.4-.06.798-.119 1.197-.119.52 0 1.02.04 1.499.119l2.234-1.31c.02-.02.04-.02.06-.04a1.86 1.86 0 0 1-.04-.479c0-.52-.04-1.02-.119-1.499l-2.234 1.31c-.02.02-.04.02-.06.04a1.86 1.86 0 0 1-.459.02zm-1.519-2.733c-.52 0-1.02.04-1.499.119l1.31 2.234c.02.02.04.04.06.06.159-.02.319-.04.479-.04.52 0 1.02.04 1.499.119l-1.31-2.234c-.02-.02-.04-.04-.06-.06a1.86 1.86 0 0 1-.479-.04zm5.008-5.028l-2.234 1.31c.02.52.08.998.159 1.478.4-.06.798-.119 1.197-.119.52 0 1.02.04 1.499.119l2.234-1.31c.02-.02.04-.02.06-.04a1.86 1.86 0 0 1-.04-.479c0-.52-.04-1.02-.119-1.499l-2.234 1.31c-.02.02-.04.02-.06.04a1.86 1.86 0 0 1-.459.02zM8.86 12c0 .52-.04 1.02-.119 1.499l-2.234-1.31c-.02-.02-.04-.02-.06-.04.02-.159.04-.319.04-.479 0-.52.04-1.02.119-1.499l2.234 1.31c.02.02.04.02.06.04a1.86 1.86 0 0 1-.04.479zm-1.057 3.758c-.52 0-1.02-.04-1.499-.119l1.31-2.234c.02-.02.02-.04.04-.06.159.02.319.04.479.04.52 0 1.02.04 1.499-.119l-1.31 2.234c-.02.02-.04.04-.06.06a1.86 1.86 0 0 1-.459.04zm-2.693-1.017l-2.234 1.31c.02.52.08.998.159 1.478.4-.06.798-.119 1.197-.119.52 0 1.02.04 1.499.119l2.234-1.31c.02-.02.04-.02.06-.04a1.86 1.86 0 0 1-.04-.479c0-.52-.04-1.02-.119-1.499l-2.234 1.31c-.02.02-.04.02-.06.04a1.86 1.86 0 0 1-.459.02zm-1.519-2.733c-.52 0-1.02.04-1.499.119l1.31 2.234c.02.02.04.04.06.06.159-.02.319-.04.479-.04.52 0 1.02.04 1.499.119l-1.31-2.234c-.02-.02-.04-.04-.06-.06a1.86 1.86 0 0 1-.479-.04zm10.106-2.274L10.46 3.984c-.02-.02-.04-.02-.06-.04a1.86 1.86 0 0 1-.04-.479c0-.52.04-1.02.119-1.499l2.234 1.31c.02.02.04.02.06.04.159-.02.319-.04.479-.04.52 0 1.02.04 1.499.119l-1.31 2.234c-.02.02-.04.04-.06.06a1.86 1.86 0 0 1-.459.04zm-1.519-2.733c-.52 0-1.02.04-1.499.119l1.31 2.234c.02.02.04.04.06.06.159-.02.319-.04.479-.04.52 0 1.02.04 1.499.119l-1.31-2.234c-.02-.02-.04-.04-.06-.06a1.86 1.86 0 0 1-.479-.04zM12 0C5.383 0 0 5.383 0 12s5.383 12 12 12 12-5.383 12-12S18.617 0 12 0z" fill="currentColor"/></svg>` },
+            { name: 'MongoDB', svg: `<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>MongoDB</title><path d="M12,0C5.383,0,0,5.383,0,12s5.383,12,12,12s12-5.383,12-12S18.617,0,12,0z M15.186,17.41c-2.234,1.54-5.24,1.54-7.474,0 C6.32,16.52,6,15.08,6,14.04c0-3.3,2.64-6,5.94-6s5.94,2.7,5.94,6C17.94,15.08,17.62,16.52,15.186,17.41z" fill="currentColor"/></svg>` },
+            { name: 'Tailwind CSS', svg: `<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Tailwind CSS</title><path d="M12.001,4.8c-3.037,0-5.5,2.463-5.5,5.5s2.463,5.5,5.5,5.5s5.5-2.463,5.5-5.5S15.038,4.8,12.001,4.8z M12.001,14.8c-2.481,0-4.5-2.019-4.5-4.5s2.019-4.5,4.5-4.5s4.5,2.019,4.5,4.5S14.482,14.8,12.001,14.8z M19.001,2.8c-3.037,0-5.5,2.463-5.5,5.5s2.463,5.5,5.5,5.5s5.5-2.463,5.5-5.5S22.038,2.8,19.001,2.8z M19.001,12.8c-2.481,0-4.5-2.019-4.5-4.5s2.019-4.5,4.5-4.5s4.5,2.019,4.5,4.5S21.482,12.8,19.001,12.8z" fill="currentColor"/></svg>` },
+            { name: 'Figma', svg: `<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Figma</title><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10zm-2-14h4v4h-4v-4zm0 6h4v4h-4v-4zm-6-6h4v4h-4v-4zm6 0h4v4h-4v-4z" fill="currentColor"/></svg>` },
+            { name: 'Git', svg: `<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Git</title><path d="M22.2,9.6c-1.3-0.2-2.5-0.9-3.4-1.9c-0.9-1-1.3-2.3-1.3-3.6c0-0.6-0.1-1.2-0.2-1.8C16.9,1.1,15.6,0,14,0 c-1.1,0-2.1,0.6-2.7,1.5C10.7,2.1,10.2,3,10,4c-0.3,1-0.5,2-0.5,3c0,1.3-0.4,2.6-1.3,3.6c-0.9,1-2.1,1.7-3.4,1.9 c-0.6,0.1-1.2,0.2-1.8,0.2C1.1,12.7,0,14,0,15.6c0,1.1,0.6,2.1,1.5,2.7C2.1,18.9,3,19.4,4,19.6c1,0.3,2,0.5,3,0.5 c1.3,0,2.6-0.4,3.6-1.3c1-0.9,1.7-2.1,1.9-3.4c0.1-0.6,0.2-1.2,0.2-1.8c0.2,0,0.3,0,0.5,0c0.6,0,1.2-0.1,1.8-0.2 c1.3-0.2,2.5-0.9,3.4-1.9c1-0.9,1.3-2.1,1.3-3.4c0-0.6-0.1-1.2-0.2-1.8C23.9,11.3,23.3,10.2,22.2,9.6z M14,2 c0.8,0,1.4,0.6,1.4,1.4c0,0.8-0.6,1.4-1.4,1.4c-0.8,0-1.4-0.6-1.4-1.4C12.6,2.6,13.2,2,14,2z M4,12c0.8,0,1.4,0.6,1.4,1.4 c0,0.8-0.6,1.4-1.4,1.4c-0.8,0-1.4-0.6-1.4-1.4C2.6,12.6,3.2,12,4,12z M12,12c-0.8,0-1.4-0.6-1.4-1.4c0-0.8,0.6-1.4,1.4-1.4 c0.8,0,1.4,0.6,1.4,1.4C13.4,11.4,12.8,12,12,12z" fill="currentColor"/></svg>` }
+        ];
+        const skillRotatorEl = document.getElementById('skill-rotator');
+        const skillIconContainerEl = document.getElementById('skill-icon-container');
+        const skillNameEl = document.getElementById('skill-name');
+        let currentSkillIndex = 0;
+
+        function updateSkill() {
+            skillRotatorEl.style.opacity = 0;
+            setTimeout(() => {
+                currentSkillIndex = (currentSkillIndex + 1) % skills.length;
+                const currentSkill = skills[currentSkillIndex];
+                skillNameEl.textContent = currentSkill.name;
+                skillIconContainerEl.innerHTML = currentSkill.svg;
+                skillRotatorEl.style.opacity = 1;
+            }, 500); // Wait for fade out
+        }
+        // Initial call
+        setTimeout(() => {
+            updateSkill();
+            setInterval(updateSkill, 3000); // Change skill every 3 seconds
+        }, 100);
+
+
+        // --- Chatbot Logic ---
+        const chatToggle = document.getElementById('chat-toggle');
+        const chatWindow = document.getElementById('chat-window');
+        const chatForm = document.getElementById('chat-form');
+        const chatInput = document.getElementById('chat-input');
+        const chatLog = document.getElementById('chat-log');
+
+        chatToggle.addEventListener('click', () => {
+            chatWindow.classList.toggle('visible');
+        });
+
+        chatForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const userMessage = chatInput.value.trim();
+            if (!userMessage) return;
+
+            appendMessage(userMessage, 'user');
+            chatInput.value = '';
+
+            setTimeout(() => {
+                const botResponse = getBotResponse(userMessage);
+                appendMessage(botResponse.text, 'bot');
+                if (botResponse.action) {
+                    botResponse.action();
+                }
+            }, 500);
+        });
+
+        function appendMessage(message, sender) {
+            const messageWrapper = document.createElement('div');
+            messageWrapper.className = `flex ${sender === 'user' ? 'justify-end' : 'justify-start'}`;
+            
+            const messageBubble = document.createElement('div');
+            messageBubble.className = `${sender === 'user' ? 'bg-gray-700' : 'bg-blue-600'} text-white p-3 rounded-lg max-w-xs`;
+            messageBubble.innerHTML = `<p>${message}</p>`; // Use innerHTML to render links
+            
+            messageWrapper.appendChild(messageBubble);
+            chatLog.appendChild(messageWrapper);
+            chatLog.scrollTop = chatLog.scrollHeight;
+        }
+
+        function getBotResponse(input) {
+            const lowerInput = input.toLowerCase();
+            
+            if (lowerInput.includes('hello') || lowerInput.includes('hi')) {
+                return { text: "Hello! What would you like to know about Jatin?" };
+            }
+            if (lowerInput.includes('project') || lowerInput.includes('work')) {
+                return { text: "Jatin has worked on some cool projects! I'll scroll you down to them.", action: () => scrollToSection('projects') };
+            }
+            if (lowerInput.includes('skill') || lowerInput.includes('tech')) {
+                return { text: "Here are the technologies Jatin is skilled in. Taking you there now!", action: () => scrollToSection('skills') };
+            }
+            if (lowerInput.includes('contact') || lowerInput.includes('email') || lowerInput.includes('hire')) {
+                return { text: "You can get in touch with Jatin using the contact form. I'll take you right to it.", action: () => scrollToSection('contact') };
+            }
+             if (lowerInput.includes('about') || lowerInput.includes('who')) {
+                return { text: "Jatin is a student and aspiring developer. Let me show you his bio.", action: () => scrollToSection('about') };
+            }
+             if (lowerInput.includes('journal') || lowerInput.includes('blog')) {
+                return { text: "Jatin writes a journal to share his thoughts. You can check it out <a href='journal.html' class='underline'>here</a>." };
+            }
+
+            return { text: "I'm not sure about that. Try asking about 'projects', 'skills', or 'contact'." };
+        }
+        
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+            setTimeout(() => chatWindow.classList.remove('visible'), 1000); // Hide chat after scrolling
+        }
+
+    </script>
+</body>
+</html>
