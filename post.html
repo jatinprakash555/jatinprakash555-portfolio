@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post - Jatin's Journal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #110D11; }
+        body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(125deg, #110D11, #4c1d95, #b91c1c, #110D11); background-size: 400% 400%; animation: gradientAnimation 20s ease infinite; z-index: -1; }
+        @keyframes gradientAnimation { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        
+        .prose-light { color: #374151; }
+        .prose-light h1, .prose-light h2, .prose-light h3, .prose-light h4 { color: #111827; }
+        .prose-light a { color: #4f46e5; }
+        .prose-light code { color: #DC2626; background-color: #F3F4F6; padding: 0.2em 0.4em; border-radius: 0.25rem; }
+        .prose-light blockquote { border-left-color: #6B7280; color: #4B5563; }
+        .prose-light img { border-radius: 0.5rem; }
+
+        .article-box {
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .article-box::-webkit-scrollbar { width: 8px; }
+        .article-box::-webkit-scrollbar-track { background: #e5e7eb; border-radius: 10px;}
+        .article-box::-webkit-scrollbar-thumb { background-color: #9ca3af; border-radius: 10px; border: 2px solid #e5e7eb; }
+    </style>
+</head>
+<body class="text-gray-300 antialiased">
+    <header class="bg-[#110D11]/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-800">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-white">JPB</a>
+            <nav>
+                <a href="journal.html" class="text-gray-400 hover:text-red-500 transition-colors">Back to Journal</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-16">
+        <div class="bg-white text-gray-900 rounded-lg shadow-2xl max-w-3xl mx-auto flex flex-col">
+            <div class="article-box p-8 md:p-12">
+                <article class="prose-light lg:prose-xl w-full max-w-none">
+                    <div id="post-container">
+                        <p>Loading post...</p>
+                    </div>
+                </article>
+            </div>
+            <div id="post-navigation" class="border-t border-gray-200 p-4 flex justify-between items-center">
+                <!-- Navigation buttons will be injected here -->
+            </div>
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+
+        const postContainer = document.getElementById('post-container');
+        const postNavigation = document.getElementById('post-navigation');
+        const urlParams = new URLSearchParams(window.location.search);
+        const postId = urlParams.get('id');
+        const posts = JSON.parse(localStorage.getItem('journalPosts')) || [];
+        
+        const postIndex = posts.findIndex(p => p.id == postId);
+        const post = posts[postIndex];
+
+        if (post) {
+            document.title = `${post.title} - Jatin's Journal`;
+            let postHTML = `
+                <div class="mb-8 text-center">
+                    <div class="flex justify-center items-center text-sm text-gray-500 mb-2">
+                        <time datetime="${post.date}">${new Date(post.date).toLocaleDateString()}</time>
+                    </div>
+                    <h1 class="text-4xl md:text-5xl font-bold">${post.title}</h1>
+                </div>
+            `;
+            if (post.image) {
+                postHTML += `<img src="${post.image}" alt="${post.title}" class="w-full mb-8">`;
+            }
+            postHTML += post.content;
+            postContainer.innerHTML = postHTML;
+
+            // --- Navigation Logic ---
+            const prevPost = posts[postIndex + 1]; // Posts are in reverse order
+            const nextPost = posts[postIndex - 1];
+
+            let navHTML = '';
+            if (prevPost) {
+                navHTML += `<a href="post.html?id=${prevPost.id}" class="text-indigo-600 hover:text-indigo-800 font-semibold inline-flex items-center gap-2"><i data-lucide="arrow-left" class="h-4 w-4"></i> Previous</a>`;
+            } else {
+                navHTML += `<div></div>`; // Placeholder for alignment
+            }
+
+            if (nextPost) {
+                navHTML += `<a href="post.html?id=${nextPost.id}" class="text-indigo-600 hover:text-indigo-800 font-semibold inline-flex items-center gap-2">Next <i data-lucide="arrow-right" class="h-4 w-4"></i></a>`;
+            } else {
+                navHTML += `<div></div>`;
+            }
+            postNavigation.innerHTML = navHTML;
+            lucide.createIcons();
+
+        } else {
+            postContainer.innerHTML = '<h1>Post not found</h1><p>This post could not be found. It may have been deleted.</p>';
+            postNavigation.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
