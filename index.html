@@ -175,7 +175,7 @@
                             I am building a strong foundation in web development, focusing on technologies like the MERN stack. I'm always excited to learn new things and tackle challenging problems. I believe in writing clean, efficient code and am dedicated to the principles of user-centric design.
                         </p>
                         <a href="/path-to-your-cv.pdf" download class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-transform duration-300 hover:scale-105">
-                            <i data-lucide="download" class="h-5 w-5"></i>
+                            <i data-lucide="download" class="h-5 w-6"></i>
                             Download CV
                         </a>
                     </div>
@@ -262,93 +262,75 @@
     </div>
 
     <script>
-        // --- All Functions ---
-
-        // --- Dynamic Project Loading ---
-        const defaultProjects = [
-            { id: 1, title: 'The Coding Companion (TCC)', description: 'A collaborative platform for students to share coding resources, manage projects, and connect with peers.', tags: ['React', 'Node.js', 'MongoDB'], liveUrl: 'https://jatinprakash555.github.io/', sourceUrl: 'https://github.com/jatinprakash555/tcc-project' },
-            { id: 2, title: 'Multi-Model Canvas', description: 'A real-time, collaborative whiteboard application that supports various inputs like text, drawings, and images.', tags: ['JavaScript', 'Firebase', 'Canvas API'], liveUrl: '#', sourceUrl: '#' },
-            { id: 3, title: 'Cloud Catcher Game', description: 'An interactive retro-style game built with HTML5 Canvas and JavaScript. Catch stars and clouds, but watch out for lightning!', tags: ['HTML5', 'Canvas API', 'JavaScript'], liveUrl: 'https://jatinprakash555.github.io/jattinprakash555-cloudcatchergame/', sourceUrl: 'https://github.com/jatinprakash555/jattinprakash555-cloudcatchergame' }
-        ];
-
-        function initializeProjects() {
-            const storedProjects = localStorage.getItem('portfolioProjects');
-            if (!storedProjects) {
-                localStorage.setItem('portfolioProjects', JSON.stringify(defaultProjects));
-            }
-            return JSON.parse(localStorage.getItem('portfolioProjects'));
-        }
-
-        function renderProjects() {
-            const projects = initializeProjects();
-            const container = document.getElementById('projects-container');
-            container.innerHTML = ''; // Clear existing
-            if (projects.length === 0) {
-                container.innerHTML = `<p class="text-center text-gray-500 col-span-3">No projects yet. Add one in the editor!</p>`;
-                return;
-            }
-            projects.forEach(project => {
-                const tagsHTML = project.tags.map(tag => `<span class="bg-blue-900/50 text-blue-300 text-xs font-semibold px-2.5 py-1 rounded-full">${tag}</span>`).join('');
-                const cardHTML = `
-                    <div class="project-card rounded-lg overflow-hidden shadow-lg p-6 flex flex-col">
-                        <h3 class="text-xl font-bold mb-2 text-white">${project.title}</h3>
-                        <p class="text-gray-400 mb-4 flex-grow">${project.description}</p>
-                        <div class="flex flex-wrap gap-2 mb-4">${tagsHTML}</div>
-                        <div class="flex space-x-4 mt-auto">
-                            <a href="${project.liveUrl}" target="_blank" class="text-blue-400 hover:text-blue-300 font-semibold">${project.title.includes('Game') ? 'Play Game' : 'Live Demo'}</a>
-                            <a href="${project.sourceUrl}" target="_blank" class="text-blue-400 hover:text-blue-300 font-semibold">Source Code</a>
-                        </div>
-                    </div>
-                `;
-                container.innerHTML += cardHTML;
-            });
-            addTiltEffect();
-        }
-
-        // --- 3D Tilt Effect for Project Cards ---
-        function addTiltEffect() {
-            const cards = document.querySelectorAll('.project-card');
-            cards.forEach(card => {
-                card.addEventListener('mousemove', (e) => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    const { width, height } = rect;
-                    const rotateX = (y / height - 0.5) * -15;
-                    const rotateY = (x / width - 0.5) * 15;
-                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
-                });
-                card.addEventListener('mouseleave', () => {
-                    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
-                });
-            });
-        }
-        
-        // --- Chatbot Logic ---
-        function getBotResponse(input) {
-            const lowerInput = input.toLowerCase();
-            if (lowerInput.includes('hello') || lowerInput.includes('hi')) return { text: "Hello! What would you like to know about Jatin?" };
-            if (lowerInput.includes('project') || lowerInput.includes('work')) return { text: "Jatin has worked on some cool projects! I'll scroll you down to them.", action: () => scrollToSection('projects') };
-            if (lowerInput.includes('skill') || lowerInput.includes('tech')) return { text: "Here are the technologies Jatin is skilled in. Taking you there now!", action: () => scrollToSection('skills') };
-            if (lowerInput.includes('contact') || lowerInput.includes('email') || lowerInput.includes('hire')) return { text: "You can get in touch with Jatin using the contact form. I'll take you right to it.", action: () => scrollToSection('contact') };
-            if (lowerInput.includes('about') || lowerInput.includes('who')) return { text: "Jatin is a student and aspiring developer. Let me show you his bio.", action: () => scrollToSection('about') };
-            if (lowerInput.includes('journal') || lowerInput.includes('blog')) return { text: "Jatin writes a journal to share his thoughts. You can check it out <a href='journal.html' class='underline'>here</a>." };
-            return { text: "I'm not sure about that. Try asking about 'projects', 'skills', or 'contact'." };
-        }
-        function scrollToSection(sectionId) {
-            const section = document.getElementById(sectionId);
-            if (section) section.scrollIntoView({ behavior: 'smooth' });
-            setTimeout(() => document.getElementById('chat-window').classList.remove('visible'), 1000);
-        }
-
-        // --- Initial Load & Event Listeners ---
         document.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
+
+            // --- Dynamic Project Loading ---
+            const defaultProjects = [
+                { id: 1, title: 'The Coding Companion (TCC)', description: 'A collaborative platform for students to share coding resources, manage projects, and connect with peers.', tags: ['React', 'Node.js', 'MongoDB'], liveUrl: 'https://jatinprakash555.github.io/', sourceUrl: 'https://github.com/jatinprakash555/tcc-project' },
+                { id: 2, title: 'Multi-Model Canvas', description: 'A real-time, collaborative whiteboard application that supports various inputs like text, drawings, and images.', tags: ['JavaScript', 'Firebase', 'Canvas API'], liveUrl: '#', sourceUrl: '#' },
+                { id: 3, title: 'Cloud Catcher Game', description: 'An interactive retro-style game built with HTML5 Canvas and JavaScript. Catch stars and clouds, but watch out for lightning!', tags: ['HTML5', 'Canvas API', 'JavaScript'], liveUrl: 'https://jatinprakash555.github.io/jattinprakash555-cloudcatchergame/', sourceUrl: 'https://github.com/jatinprakash555/jattinprakash555-cloudcatchergame' }
+            ];
+
+            function initializeProjects() {
+                const storedProjects = localStorage.getItem('portfolioProjects');
+                if (!storedProjects) {
+                    localStorage.setItem('portfolioProjects', JSON.stringify(defaultProjects));
+                }
+                return JSON.parse(localStorage.getItem('portfolioProjects'));
+            }
+
+            function renderProjects() {
+                const projects = initializeProjects();
+                const container = document.getElementById('projects-container');
+                if (!container) return;
+                container.innerHTML = ''; // Clear existing
+                if (projects.length === 0) {
+                    container.innerHTML = `<p class="text-center text-gray-500 col-span-3">No projects yet. Add one in the editor!</p>`;
+                    return;
+                }
+                projects.forEach(project => {
+                    const tagsHTML = project.tags.map(tag => `<span class="bg-blue-900/50 text-blue-300 text-xs font-semibold px-2.5 py-1 rounded-full">${tag}</span>`).join('');
+                    const cardHTML = `
+                        <div class="project-card rounded-lg overflow-hidden shadow-lg p-6 flex flex-col">
+                            <h3 class="text-xl font-bold mb-2 text-white">${project.title}</h3>
+                            <p class="text-gray-400 mb-4 flex-grow">${project.description}</p>
+                            <div class="flex flex-wrap gap-2 mb-4">${tagsHTML}</div>
+                            <div class="flex space-x-4 mt-auto">
+                                <a href="${project.liveUrl}" target="_blank" class="text-blue-400 hover:text-blue-300 font-semibold">${project.title.includes('Game') ? 'Play Game' : 'Live Demo'}</a>
+                                <a href="${project.sourceUrl}" target="_blank" class="text-blue-400 hover:text-blue-300 font-semibold">Source Code</a>
+                            </div>
+                        </div>
+                    `;
+                    container.innerHTML += cardHTML;
+                });
+                addTiltEffect();
+            }
+
+            function addTiltEffect() {
+                const cards = document.querySelectorAll('.project-card');
+                cards.forEach(card => {
+                    card.addEventListener('mousemove', (e) => {
+                        const rect = card.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        const { width, height } = rect;
+                        const rotateX = (y / height - 0.5) * -15;
+                        const rotateY = (x / width - 0.5) * 15;
+                        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+                    });
+                    card.addEventListener('mouseleave', () => {
+                        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+                    });
+                });
+            }
+
             renderProjects();
 
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.get('admin') === 'true') {
-                document.getElementById('edit-projects-btn').classList.remove('hidden');
+                const editBtn = document.getElementById('edit-projects-btn');
+                if(editBtn) editBtn.classList.remove('hidden');
             }
 
             const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -447,39 +429,6 @@
                 messageWrapper.appendChild(messageBubble);
                 chatLog.appendChild(messageWrapper);
                 chatLog.scrollTop = chatLog.scrollHeight;
-            }
-
-            function getBotResponse(input) {
-                const lowerInput = input.toLowerCase();
-                
-                if (lowerInput.includes('hello') || lowerInput.includes('hi')) {
-                    return { text: "Hello! What would you like to know about Jatin?" };
-                }
-                if (lowerInput.includes('project') || lowerInput.includes('work')) {
-                    return { text: "Jatin has worked on some cool projects! I'll scroll you down to them.", action: () => scrollToSection('projects') };
-                }
-                if (lowerInput.includes('skill') || lowerInput.includes('tech')) {
-                    return { text: "Here are the technologies Jatin is skilled in. Taking you there now!", action: () => scrollToSection('skills') };
-                }
-                if (lowerInput.includes('contact') || lowerInput.includes('email') || lowerInput.includes('hire')) {
-                    return { text: "You can get in touch with Jatin using the contact form. I'll take you right to it.", action: () => scrollToSection('contact') };
-                }
-                 if (lowerInput.includes('about') || lowerInput.includes('who')) {
-                    return { text: "Jatin is a student and aspiring developer. Let me show you his bio.", action: () => scrollToSection('about') };
-                }
-                 if (lowerInput.includes('journal') || lowerInput.includes('blog')) {
-                    return { text: "Jatin writes a journal to share his thoughts. You can check it out <a href='journal.html' class='underline'>here</a>." };
-                }
-
-                return { text: "I'm not sure about that. Try asking about 'projects', 'skills', or 'contact'." };
-            }
-            
-            function scrollToSection(sectionId) {
-                const section = document.getElementById(sectionId);
-                if (section) {
-                    section.scrollIntoView({ behavior: 'smooth' });
-                }
-                setTimeout(() => chatWindow.classList.remove('visible'), 1000); // Hide chat after scrolling
             }
         });
     </script>
