@@ -695,6 +695,20 @@
                     card.setAttribute('data-tilt', '');
 
                     if (p.layout === 'wide') {
+                        const visual = p.imageUrl
+                            ? `<img src="${p.imageUrl}" class="mt-6 w-full h-48 object-cover rounded-t-xl border border-gray-700 shadow-2xl translate-y-4 group-hover:translate-y-2 transition-transform">`
+                            : `<div class="mt-6 w-full h-48 bg-[#1e1e1e] rounded-t-xl border border-gray-700 p-3 font-mono text-xs text-gray-400 shadow-2xl translate-y-4 group-hover:translate-y-2 transition-transform">
+                                <div class="flex gap-1.5 mb-3 border-b border-gray-700 pb-2">
+                                    <span class="mock-dot bg-red-500"></span><span class="mock-dot bg-yellow-500"></span><span class="mock-dot bg-green-500"></span>
+                                </div>
+                                <div class="space-y-1">
+                                    <p><span class="text-purple-400">const</span> <span class="text-blue-400">${p.title.replace(/\s+/g, '')}</span> = <span class="text-yellow-300">{</span></p>
+                                    <p class="pl-4">tags: [${p.tags.map(t => `'${t}'`).join(', ')}],</p>
+                                    <p class="pl-4">status: <span class="text-green-400">'Live'</span></p>
+                                    <p><span class="text-yellow-300">}</span>;</p>
+                                </div>
+                            </div>`;
+
                         card.innerHTML = `
                             <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl -mr-16 -mt-16 transition-all group-hover:bg-blue-500/20"></div>
                             <div>
@@ -708,24 +722,14 @@
                                 <h3 class="text-3xl font-bold text-white mb-2">${p.title}</h3>
                                 <p class="text-gray-400 text-sm max-w-md">${p.description}</p>
                             </div>
-                            <div class="mt-6 w-full h-48 bg-[#1e1e1e] rounded-t-xl border border-gray-700 p-3 font-mono text-xs text-gray-400 shadow-2xl translate-y-4 group-hover:translate-y-2 transition-transform">
-                                <div class="flex gap-1.5 mb-3 border-b border-gray-700 pb-2">
-                                    <span class="mock-dot bg-red-500"></span><span class="mock-dot bg-yellow-500"></span><span class="mock-dot bg-green-500"></span>
-                                </div>
-                                <div class="space-y-1">
-                                    <p><span class="text-purple-400">const</span> <span class="text-blue-400">${p.title.replace(/\s+/g, '')}</span> = <span class="text-yellow-300">{</span></p>
-                                    <p class="pl-4">tags: [${p.tags.map(t => `'${t}'`).join(', ')}],</p>
-                                    <p class="pl-4">status: <span class="text-green-400">'Live'</span></p>
-                                    <p><span class="text-yellow-300">}</span>;</p>
-                                </div>
-                            </div>
+                            ${visual}
                         `;
                     } else if (p.layout === 'tall') {
                         card.innerHTML = `
                             <div class="absolute top-0 right-0 w-full h-full bg-gradient-to-b from-purple-500/5 to-transparent"></div>
                             <div class="flex-grow flex flex-col items-center justify-center py-8">
                                 <div class="relative w-24 h-24 mb-6 animate-float">
-                                    <i data-lucide="${p.icon || 'layers'}" class="w-24 h-24 text-purple-400 fill-purple-400/20"></i>
+                                    ${p.imageUrl ? `<img src="${p.imageUrl}" class="w-24 h-24 rounded-2xl object-cover border border-purple-500/30 shadow-lg shadow-purple-500/20">` : `<i data-lucide="${p.icon || 'layers'}" class="w-24 h-24 text-purple-400 fill-purple-400/20"></i>`}
                                 </div>
                                 <h3 class="text-2xl font-bold text-center">${p.title}</h3>
                                 <span class="text-xs text-purple-300 mt-1 uppercase tracking-wider">${p.category}</span>
@@ -742,9 +746,7 @@
                         card.innerHTML = `
                             <div>
                                 <div class="flex justify-between items-center mb-4">
-                                     <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center text-blue-400">
-                                        <i data-lucide="${p.icon || 'layers'}" class="w-5 h-5"></i>
-                                    </div>
+                                     ${p.imageUrl ? `<img src="${p.imageUrl}" class="w-10 h-10 rounded-lg object-cover border border-white/10">` : `<div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center text-blue-400"><i data-lucide="${p.icon || 'layers'}" class="w-5 h-5"></i></div>`}
                                     <div class="flex gap-2">
                                         ${p.sourceUrl !== '#' ? `<a href="${p.sourceUrl}" target="_blank" class="text-gray-500 hover:text-white"><i data-lucide="github" class="w-4 h-4"></i></a>` : ''}
                                         ${p.liveUrl !== '#' ? `<a href="${p.liveUrl}" target="_blank" class="text-blue-400 hover:text-blue-300"><i data-lucide="external-link" class="w-4 h-4"></i></a>` : ''}

@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderProjects() {
         // Clear current list
         projectsList.innerHTML = '';
-        
+
         // Toggle empty state visibility
         if (projects.length === 0) {
             emptyState.classList.remove('hidden');
@@ -36,11 +36,16 @@ document.addEventListener('DOMContentLoaded', () => {
         projects.forEach((p) => {
             const card = document.createElement('div');
             card.className = 'glass p-5 rounded-2xl flex items-center justify-between group border border-transparent hover:border-white/10 transition-all';
+
+            const visual = p.imageUrl
+                ? `<img src="${p.imageUrl}" class="w-12 h-12 rounded-xl object-cover border border-white/10">`
+                : `<div class="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-gray-400 group-hover:text-white transition-colors">
+                        <i data-lucide="${p.icon || 'layers'}" class="w-6 h-6"></i>
+                   </div>`;
+
             card.innerHTML = `
                 <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-gray-400 group-hover:text-white transition-colors">
-                        <i data-lucide="${p.icon || 'layers'}" class="w-6 h-6"></i>
-                    </div>
+                    ${visual}
                     <div class="flex flex-col">
                         <h3 class="font-bold text-white text-base">${p.title}</h3>
                         <div class="flex items-center gap-2 mt-1">
@@ -56,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             projectsList.appendChild(card);
         });
-        
+
         // Safety check for Lucide icons
         if (window.lucide) {
             lucide.createIcons();
@@ -68,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     projectForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        
+
         const projectData = {
             id: editIdInput.value ? parseInt(editIdInput.value) : Date.now(),
             title: document.getElementById('title').value,
@@ -78,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
             liveUrl: document.getElementById('liveUrl').value,
             sourceUrl: document.getElementById('sourceUrl').value,
             icon: document.getElementById('icon').value || 'layers',
+            imageUrl: document.getElementById('imageUrl').value || '',
             layout: document.getElementById('layout').value || 'standard'
         };
 
@@ -107,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
         formTitle.textContent = "Update Project Entry";
         submitBtn.textContent = "Save Changes";
         cancelBtn.classList.remove('hidden');
-        
+
         editIdInput.value = p.id;
         document.getElementById('title').value = p.title;
         document.getElementById('category').value = p.category;
@@ -116,6 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('liveUrl').value = p.liveUrl;
         document.getElementById('sourceUrl').value = p.sourceUrl;
         document.getElementById('icon').value = p.icon || 'layers';
+        document.getElementById('imageUrl').value = p.imageUrl || '';
         document.getElementById('layout').value = p.layout || 'standard';
 
         window.scrollTo({ top: 0, behavior: 'smooth' });

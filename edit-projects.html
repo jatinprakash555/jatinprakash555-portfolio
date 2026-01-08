@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,32 +9,37 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        body { 
-            font-family: 'Outfit', sans-serif; 
-            background-color: #050505; 
-            color: #e2e8f0; 
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #050505;
+            color: #e2e8f0;
         }
-        .glass { 
-            background: rgba(255, 255, 255, 0.03); 
-            backdrop-filter: blur(16px); 
-            border: 1px solid rgba(255, 255, 255, 0.05); 
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
-        .input-field { 
-            background: rgba(0, 0, 0, 0.3); 
-            border: 1px solid rgba(255, 255, 255, 0.1); 
+
+        .input-field {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             transition: border-color 0.2s;
         }
-        .input-field:focus { 
-            border-color: #3b82f6; 
-            outline: none; 
+
+        .input-field:focus {
+            border-color: #3b82f6;
+            outline: none;
         }
     </style>
 </head>
+
 <body class="min-h-screen pb-20">
     <header class="sticky top-0 z-50 glass border-b border-white/10 mb-12">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <h1 class="text-xl font-bold">Project Dashboard</h1>
-            <a href="index.html?admin=true" class="text-sm text-gray-400 hover:text-white transition-colors">Back to Portfolio</a>
+            <a href="index.html?admin=true" class="text-sm text-gray-400 hover:text-white transition-colors">Back to
+                Portfolio</a>
         </div>
     </header>
 
@@ -43,11 +49,17 @@
                 <h2 id="form-title" class="text-lg font-bold mb-4">Add New Project</h2>
                 <form id="project-form" class="space-y-4">
                     <input type="hidden" id="edit-id">
-                    <input type="text" id="title" required class="input-field w-full rounded-xl p-3 text-sm" placeholder="Title">
-                    <input type="text" id="category" required class="input-field w-full rounded-xl p-3 text-sm" placeholder="Category (e.g. FULL STACK)">
-                    <textarea id="description" rows="3" required class="input-field w-full rounded-xl p-3 text-sm" placeholder="Description"></textarea>
+                    <input type="text" id="title" required class="input-field w-full rounded-xl p-3 text-sm"
+                        placeholder="Title">
+                    <input type="text" id="category" required class="input-field w-full rounded-xl p-3 text-sm"
+                        placeholder="Category (e.g. FULL STACK)">
+                    <textarea id="description" rows="3" required class="input-field w-full rounded-xl p-3 text-sm"
+                        placeholder="Description"></textarea>
+                    <input type="url" id="imageUrl" class="input-field w-full rounded-xl p-3 text-sm"
+                        placeholder="Cover Image URL (Optional)">
                     <div class="grid grid-cols-2 gap-4">
-                        <input type="text" id="icon" required class="input-field w-full rounded-xl p-3 text-sm" placeholder="Lucide Icon (e.g. code, cpu)">
+                        <input type="text" id="icon" required class="input-field w-full rounded-xl p-3 text-sm"
+                            placeholder="Lucide Icon (e.g. code, cpu)">
                         <select id="layout" class="input-field w-full rounded-xl p-3 text-sm bg-black">
                             <option value="standard">Standard Card</option>
                             <option value="wide">Wide Card (Featured)</option>
@@ -55,8 +67,11 @@
                         </select>
                     </div>
                     <div class="flex gap-2">
-                        <button type="submit" id="submit-btn" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition-colors">Save Project</button>
-                        <button type="button" id="cancel-btn" class="hidden px-4 bg-white/5 hover:bg-white/10 rounded-xl transition-colors">Cancel</button>
+                        <button type="submit" id="submit-btn"
+                            class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition-colors">Save
+                            Project</button>
+                        <button type="button" id="cancel-btn"
+                            class="hidden px-4 bg-white/5 hover:bg-white/10 rounded-xl transition-colors">Cancel</button>
                     </div>
                 </form>
             </div>
@@ -75,4 +90,5 @@
 
     <script src="dashboard.js"></script>
 </body>
+
 </html>
