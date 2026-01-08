@@ -37,14 +37,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const card = document.createElement('div');
             card.className = 'glass p-5 rounded-2xl flex items-center justify-between group border border-transparent hover:border-white/10 transition-all';
             card.innerHTML = `
-                <div class="flex flex-col">
-                    <h3 class="font-bold text-white text-base">${p.title}</h3>
-                    <div class="flex items-center gap-2 mt-1">
-                        <span class="text-[10px] bg-blue-600/20 text-blue-400 px-2 py-0.5 rounded uppercase font-bold">${p.category}</span>
-                        <span class="text-[10px] text-gray-500 font-mono">${new Date(p.id).toLocaleDateString()}</span>
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-gray-400 group-hover:text-white transition-colors">
+                        <i data-lucide="${p.icon || 'layers'}" class="w-6 h-6"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <h3 class="font-bold text-white text-base">${p.title}</h3>
+                        <div class="flex items-center gap-2 mt-1">
+                            <span class="text-[10px] bg-blue-600/20 text-blue-400 px-2 py-0.5 rounded uppercase font-bold">${p.category}</span>
+                            <span class="text-[10px] text-gray-500 font-mono">${p.layout || 'standard'}</span>
+                        </div>
                     </div>
                 </div>
-                <div class="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                <div class="flex gap-2">
                     <button onclick="editProject(${p.id})" class="px-3 py-1.5 bg-blue-600/10 text-blue-400 rounded-lg text-xs font-bold hover:bg-blue-600/20 transition-colors">Edit</button>
                     <button onclick="deleteProject(${p.id})" class="px-3 py-1.5 bg-red-600/10 text-red-400 rounded-lg text-xs font-bold hover:bg-red-600/20 transition-colors">Delete</button>
                 </div>
@@ -72,7 +77,8 @@ document.addEventListener('DOMContentLoaded', () => {
             tags: document.getElementById('tags').value.split(',').map(t => t.trim()).filter(t => t !== ""),
             liveUrl: document.getElementById('liveUrl').value,
             sourceUrl: document.getElementById('sourceUrl').value,
-            isBig: document.getElementById('isBig').checked
+            icon: document.getElementById('icon').value || 'layers',
+            layout: document.getElementById('layout').value || 'standard'
         };
 
         if (editIdInput.value) {
@@ -109,7 +115,8 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('tags').value = p.tags.join(', ');
         document.getElementById('liveUrl').value = p.liveUrl;
         document.getElementById('sourceUrl').value = p.sourceUrl;
-        document.getElementById('isBig').checked = p.isBig;
+        document.getElementById('icon').value = p.icon || 'layers';
+        document.getElementById('layout').value = p.layout || 'standard';
 
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };

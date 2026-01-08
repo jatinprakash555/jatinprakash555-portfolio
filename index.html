@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jatin Prakash Behera | Full Stack Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-    
+
     <!-- Tailwind Configuration -->
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
-                    fontFamily: { 
+                    fontFamily: {
                         sans: ['Outfit', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'] 
+                        mono: ['JetBrains Mono', 'monospace']
                     },
                     colors: {
                         cyber: {
@@ -53,8 +56,12 @@
     </script>
 
     <style>
-        body { background-color: #000000; color: #e2e8f0; overflow-x: hidden; }
-        
+        body {
+            background-color: #000000;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+
         /* Glassmorphism Utilities */
         .glass {
             background: rgba(255, 255, 255, 0.03);
@@ -62,32 +69,39 @@
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
-        
+
         /* 3D Tilt Card Base Styles */
         .glass-card {
-            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            transform-style: preserve-3d; /* Essential for 3D tilt */
-            transition: transform 0.1s ease-out; /* Smooth movement */
+            transform-style: preserve-3d;
+            /* Essential for 3D tilt */
+            transition: transform 0.1s ease-out;
+            /* Smooth movement */
         }
 
         /* Cyber Mode Overrides */
-        .cyber-mode body { background-color: #050505; }
-        .cyber-mode .glass { 
-            border-color: rgba(0, 243, 255, 0.2); 
-            background: rgba(0, 243, 255, 0.02); 
+        .cyber-mode body {
+            background-color: #050505;
+        }
+
+        .cyber-mode .glass {
+            border-color: rgba(0, 243, 255, 0.2);
+            background: rgba(0, 243, 255, 0.02);
             box-shadow: 0 0 15px rgba(0, 243, 255, 0.05);
         }
+
         .cyber-mode .glass-card {
             border-color: rgba(0, 243, 255, 0.1);
         }
+
         .cyber-mode .gradient-text {
             background: linear-gradient(90deg, #00f3ff, #bd00ff);
             -webkit-background-clip: text;
         }
-        
+
         /* Default Gradient Text */
         .gradient-text {
             background: linear-gradient(90deg, #60a5fa, #34d399);
@@ -96,52 +110,96 @@
         }
 
         /* Utilities */
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .typewriter::after { content: '|'; animation: blink 1s step-start infinite; }
-        @keyframes blink { 50% { opacity: 0; } }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .typewriter::after {
+            content: '|';
+            animation: blink 1s step-start infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
 
         /* Code Mockup CSS */
-        .mock-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 4px; }
+        .mock-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 4px;
+        }
     </style>
 </head>
+
 <body class="transition-colors duration-500 selection:bg-blue-500 selection:text-white">
 
     <!-- Background Ambient Blobs -->
     <div class="fixed inset-0 pointer-events-none z-[-1] overflow-hidden">
-        <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob"></div>
-        <div class="absolute top-0 right-1/4 w-96 h-96 bg-purple-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob animation-delay-2000"></div>
-        <div class="absolute -bottom-32 left-1/3 w-96 h-96 bg-teal-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob animation-delay-4000"></div>
+        <div
+            class="absolute top-0 left-1/4 w-96 h-96 bg-blue-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob">
+        </div>
+        <div
+            class="absolute top-0 right-1/4 w-96 h-96 bg-purple-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob animation-delay-2000">
+        </div>
+        <div
+            class="absolute -bottom-32 left-1/3 w-96 h-96 bg-teal-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob animation-delay-4000">
+        </div>
     </div>
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 top-0 start-0 border-b border-gray-800 glass transition-all duration-300">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="#" class="flex items-center space-x-2 group">
-                <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-teal-400 rounded-lg flex items-center justify-center font-bold text-black group-hover:rotate-12 transition-transform">J</div>
-                <span class="self-center text-xl font-bold whitespace-nowrap tracking-tight">JPB<span class="text-blue-500">.</span></span>
+                <div
+                    class="w-8 h-8 bg-gradient-to-br from-blue-500 to-teal-400 rounded-lg flex items-center justify-center font-bold text-black group-hover:rotate-12 transition-transform">
+                    J</div>
+                <span class="self-center text-xl font-bold whitespace-nowrap tracking-tight">JPB<span
+                        class="text-blue-500">.</span></span>
             </a>
-            
+
             <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse gap-3">
                 <!-- Theme Toggle -->
-                <button id="theme-toggle" class="p-2 rounded-full hover:bg-white/10 transition-all border border-transparent hover:border-white/10" title="Toggle Cyber Mode">
+                <button id="theme-toggle"
+                    class="p-2 rounded-full hover:bg-white/10 transition-all border border-transparent hover:border-white/10"
+                    title="Toggle Cyber Mode">
                     <i data-lucide="zap" class="w-5 h-5 text-yellow-400 transition-transform hover:scale-110"></i>
                 </button>
-                
-                <a href="#contact" class="hidden md:block text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center transition-all hover:shadow-[0_0_20px_rgba(37,99,235,0.5)]">
+
+                <a href="#contact"
+                    class="hidden md:block text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center transition-all hover:shadow-[0_0_20px_rgba(37,99,235,0.5)]">
                     Let's Talk
                 </a>
-                
-                <button id="mobile-menu-btn" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-gray-400 rounded-lg md:hidden hover:bg-gray-800 focus:outline-none">
+
+                <button id="mobile-menu-btn" type="button"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-gray-400 rounded-lg md:hidden hover:bg-gray-800 focus:outline-none">
                     <i data-lucide="menu"></i>
                 </button>
             </div>
-            
+
             <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
-                <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0">
-                    <li><a href="#about" class="block py-2 px-3 text-gray-300 hover:text-white transition-colors relative group">About<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all group-hover:w-full"></span></a></li>
-                    <li><a href="#projects" class="block py-2 px-3 text-gray-300 hover:text-white transition-colors relative group">Projects<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all group-hover:w-full"></span></a></li>
-                    <li><a href="#skills" class="block py-2 px-3 text-gray-300 hover:text-white transition-colors relative group">Stack<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all group-hover:w-full"></span></a></li>
-                    <li><a href="journal.html" class="block py-2 px-3 text-gray-300 hover:text-white transition-colors relative group">Journal<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all group-hover:w-full"></span></a></li>
+                <ul
+                    class="flex flex-col p-4 md:p-0 mt-4 font-medium md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0">
+                    <li><a href="#about"
+                            class="block py-2 px-3 text-gray-300 hover:text-white transition-colors relative group">About<span
+                                class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all group-hover:w-full"></span></a>
+                    </li>
+                    <li><a href="#projects"
+                            class="block py-2 px-3 text-gray-300 hover:text-white transition-colors relative group">Projects<span
+                                class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all group-hover:w-full"></span></a>
+                    </li>
+                    <li><a href="#skills"
+                            class="block py-2 px-3 text-gray-300 hover:text-white transition-colors relative group">Stack<span
+                                class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all group-hover:w-full"></span></a>
+                    </li>
+                    <li><a href="journal.html"
+                            class="block py-2 px-3 text-gray-300 hover:text-white transition-colors relative group">Journal<span
+                                class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all group-hover:w-full"></span></a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -162,44 +220,51 @@
         <section class="min-h-[85vh] flex items-center justify-center relative px-4">
             <div class="text-center max-w-4xl mx-auto z-10">
                 <!-- Status Badge -->
-                <div class="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full glass text-sm font-medium text-blue-300 border border-blue-500/30 animate-float">
+                <div
+                    class="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full glass text-sm font-medium text-blue-300 border border-blue-500/30 animate-float">
                     <span class="relative flex h-2 w-2">
-                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                      <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                     </span>
                     Open to Work & Collaborations
                 </div>
-                
+
                 <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight leading-tight">
                     Engineering <br>
                     <span class="gradient-text type-writer-text">Digital Reality</span>
                 </h1>
-                
+
                 <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
-                    I am <strong class="text-white">Jatin Prakash Behera</strong>. A Full Stack Developer crafting scalable web applications and immersive digital experiences using the MERN stack.
+                    I am <strong class="text-white">Jatin Prakash Behera</strong>. A Full Stack Developer crafting
+                    scalable web applications and immersive digital experiences using the MERN stack.
                 </p>
-                
+
                 <!-- Social Buttons Row -->
                 <div class="flex flex-wrap justify-center gap-4 mb-8">
-                     <a href="https://github.com/jatinprakash555" target="_blank" class="px-6 py-3 rounded-xl glass hover:bg-white/10 transition-all font-semibold flex items-center gap-2 text-white border border-white/10 hover:scale-105">
+                    <a href="https://github.com/jatinprakash555" target="_blank"
+                        class="px-6 py-3 rounded-xl glass hover:bg-white/10 transition-all font-semibold flex items-center gap-2 text-white border border-white/10 hover:scale-105">
                         <i data-lucide="github" class="w-5 h-5"></i> GitHub
                     </a>
-                    <a href="https://www.linkedin.com/in/jatin-prakash-0686a132" target="_blank" class="px-6 py-3 rounded-xl glass hover:bg-[#0077b5]/20 transition-all font-semibold flex items-center gap-2 text-white border border-white/10 hover:border-[#0077b5]/50 hover:scale-105">
+                    <a href="https://www.linkedin.com/in/jatin-prakash-0686a132" target="_blank"
+                        class="px-6 py-3 rounded-xl glass hover:bg-[#0077b5]/20 transition-all font-semibold flex items-center gap-2 text-white border border-white/10 hover:border-[#0077b5]/50 hover:scale-105">
                         <i data-lucide="linkedin" class="w-5 h-5 text-[#0077b5]"></i> LinkedIn
                     </a>
-                     <a href="https://twitter.com/jatinprakashb5" target="_blank" class="px-6 py-3 rounded-xl glass hover:bg-[#1DA1F2]/20 transition-all font-semibold flex items-center gap-2 text-white border border-white/10 hover:border-[#1DA1F2]/50 hover:scale-105">
+                    <a href="https://twitter.com/jatinprakashb5" target="_blank"
+                        class="px-6 py-3 rounded-xl glass hover:bg-[#1DA1F2]/20 transition-all font-semibold flex items-center gap-2 text-white border border-white/10 hover:border-[#1DA1F2]/50 hover:scale-105">
                         <i data-lucide="twitter" class="w-5 h-5 text-[#1DA1F2]"></i> Twitter
                     </a>
                 </div>
 
                 <div class="flex justify-center">
-                    <a href="#projects" class="group px-8 py-3.5 rounded-xl bg-white text-black font-bold hover:bg-gray-200 transition-all flex items-center justify-center gap-2">
-                        View Projects 
+                    <a href="#projects"
+                        class="group px-8 py-3.5 rounded-xl bg-white text-black font-bold hover:bg-gray-200 transition-all flex items-center justify-center gap-2">
+                        View Projects
                         <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                     </a>
                 </div>
             </div>
-            
+
             <!-- Decorative Elements -->
             <div class="absolute top-1/2 left-10 hidden lg:block opacity-20">
                 <i data-lucide="code" class="w-24 h-24 rotate-12"></i>
@@ -211,26 +276,42 @@
 
         <!-- Infinite Skills Marquee -->
         <section id="skills" class="py-12 border-y border-gray-800 bg-black/20 overflow-hidden relative">
-            <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#0f172a] to-transparent z-10 pointer-events-none"></div>
-            <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#0f172a] to-transparent z-10 pointer-events-none"></div>
-            
+            <div
+                class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#0f172a] to-transparent z-10 pointer-events-none">
+            </div>
+            <div
+                class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#0f172a] to-transparent z-10 pointer-events-none">
+            </div>
+
             <div class="flex whitespace-nowrap animate-marquee">
                 <div class="flex gap-16 mx-8 items-center opacity-70 hover:opacity-100 transition-opacity">
                     <!-- Tech Items -->
-                    <span class="text-2xl font-bold flex items-center gap-3 text-gray-300"><i data-lucide="atom" class="text-blue-400"></i> React</span>
-                    <span class="text-2xl font-bold flex items-center gap-3 text-gray-300"><i data-lucide="server" class="text-green-500"></i> Node.js</span>
-                    <span class="text-2xl font-bold flex items-center gap-3 text-gray-300"><i data-lucide="database" class="text-green-400"></i> MongoDB</span>
-                    <span class="text-2xl font-bold flex items-center gap-3 text-gray-300"><i data-lucide="palette" class="text-cyan-400"></i> Tailwind</span>
-                    <span class="text-2xl font-bold flex items-center gap-3 text-gray-300"><i data-lucide="layout-grid" class="text-pink-500"></i> Figma</span>
-                    <span class="text-2xl font-bold flex items-center gap-3 text-gray-300"><i data-lucide="git-branch" class="text-orange-500"></i> Git</span>
-                    <span class="text-2xl font-bold flex items-center gap-3 text-gray-300"><i data-lucide="terminal" class="text-yellow-400"></i> JavaScript</span>
-                    
+                    <span class="text-2xl font-bold flex items-center gap-3 text-gray-300"><i data-lucide="atom"
+                            class="text-blue-400"></i> React</span>
+                    <span class="text-2xl font-bold flex items-center gap-3 text-gray-300"><i data-lucide="server"
+                            class="text-green-500"></i> Node.js</span>
+                    <span class="text-2xl font-bold flex items-center gap-3 text-gray-300"><i data-lucide="database"
+                            class="text-green-400"></i> MongoDB</span>
+                    <span class="text-2xl font-bold flex items-center gap-3 text-gray-300"><i data-lucide="palette"
+                            class="text-cyan-400"></i> Tailwind</span>
+                    <span class="text-2xl font-bold flex items-center gap-3 text-gray-300"><i data-lucide="layout-grid"
+                            class="text-pink-500"></i> Figma</span>
+                    <span class="text-2xl font-bold flex items-center gap-3 text-gray-300"><i data-lucide="git-branch"
+                            class="text-orange-500"></i> Git</span>
+                    <span class="text-2xl font-bold flex items-center gap-3 text-gray-300"><i data-lucide="terminal"
+                            class="text-yellow-400"></i> JavaScript</span>
+
                     <!-- Duplicate for Loop -->
-                    <span class="text-2xl font-bold flex items-center gap-3 text-gray-300"><i data-lucide="atom" class="text-blue-400"></i> React</span>
-                    <span class="text-2xl font-bold flex items-center gap-3 text-gray-300"><i data-lucide="server" class="text-green-500"></i> Node.js</span>
-                    <span class="text-2xl font-bold flex items-center gap-3 text-gray-300"><i data-lucide="database" class="text-green-400"></i> MongoDB</span>
-                    <span class="text-2xl font-bold flex items-center gap-3 text-gray-300"><i data-lucide="palette" class="text-cyan-400"></i> Tailwind</span>
-                    <span class="text-2xl font-bold flex items-center gap-3 text-gray-300"><i data-lucide="layout-grid" class="text-pink-500"></i> Figma</span>
+                    <span class="text-2xl font-bold flex items-center gap-3 text-gray-300"><i data-lucide="atom"
+                            class="text-blue-400"></i> React</span>
+                    <span class="text-2xl font-bold flex items-center gap-3 text-gray-300"><i data-lucide="server"
+                            class="text-green-500"></i> Node.js</span>
+                    <span class="text-2xl font-bold flex items-center gap-3 text-gray-300"><i data-lucide="database"
+                            class="text-green-400"></i> MongoDB</span>
+                    <span class="text-2xl font-bold flex items-center gap-3 text-gray-300"><i data-lucide="palette"
+                            class="text-cyan-400"></i> Tailwind</span>
+                    <span class="text-2xl font-bold flex items-center gap-3 text-gray-300"><i data-lucide="layout-grid"
+                            class="text-pink-500"></i> Figma</span>
                 </div>
             </div>
         </section>
@@ -239,39 +320,46 @@
         <section id="about" class="py-20 relative overflow-hidden">
             <div class="container mx-auto px-4 max-w-4xl">
                 <div class="glass rounded-3xl p-8 md:p-12 relative flex flex-col md:flex-row items-center gap-12">
-                     <!-- Text Content -->
+                    <!-- Text Content -->
                     <div class="w-full md:w-1/2">
                         <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">More Than Just Code</h2>
                         <p class="text-gray-400 mb-6 leading-relaxed">
-                            I'm a passionate developer who bridges the gap between functional code and beautiful design. With a strong foundation in the MERN stack and a keen eye for UI/UX, I build applications that solve real-world problems.
+                            I'm a passionate developer who bridges the gap between functional code and beautiful design.
+                            With a strong foundation in the MERN stack and a keen eye for UI/UX, I build applications
+                            that solve real-world problems.
                         </p>
                         <p class="text-gray-400 mb-8 leading-relaxed">
-                            Currently pursuing my BSc in ITM at Ravenshaw University, I am eager to apply my skills in a professional environment.
+                            Currently pursuing my BSc in ITM at Ravenshaw University, I am eager to apply my skills in a
+                            professional environment.
                         </p>
-                        
-                        <a href="path-to-your-cv.pdf" download class="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold px-8 py-3.5 rounded-xl hover:shadow-[0_0_20px_rgba(37,99,235,0.5)] transition-all transform hover:-translate-y-1 group">
+
+                        <a href="path-to-your-cv.pdf" download
+                            class="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold px-8 py-3.5 rounded-xl hover:shadow-[0_0_20px_rgba(37,99,235,0.5)] transition-all transform hover:-translate-y-1 group">
                             <i data-lucide="download" class="w-5 h-5 group-hover:animate-bounce"></i>
                             Download CV
                         </a>
                     </div>
-                    
+
                     <!-- Decorative Visual -->
                     <div class="w-full md:w-1/2 flex justify-center relative">
                         <div class="absolute inset-0 bg-blue-500/20 blur-[60px] rounded-full"></div>
-                        <div class="glass-card p-6 rounded-2xl relative z-10 w-full max-w-xs rotate-3 hover:rotate-0 transition-transform duration-500" data-tilt>
-                             <div class="flex items-center gap-3 mb-4 border-b border-white/10 pb-4">
+                        <div class="glass-card p-6 rounded-2xl relative z-10 w-full max-w-xs rotate-3 hover:rotate-0 transition-transform duration-500"
+                            data-tilt>
+                            <div class="flex items-center gap-3 mb-4 border-b border-white/10 pb-4">
                                 <div class="w-3 h-3 rounded-full bg-red-500"></div>
                                 <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
                                 <div class="w-3 h-3 rounded-full bg-green-500"></div>
                                 <span class="ml-auto text-xs text-gray-500 font-mono">resume.json</span>
-                             </div>
-                             <div class="space-y-2 font-mono text-sm">
-                                <p class="text-gray-400"><span class="text-purple-400">const</span> <span class="text-blue-400">developer</span> = {</p>
+                            </div>
+                            <div class="space-y-2 font-mono text-sm">
+                                <p class="text-gray-400"><span class="text-purple-400">const</span> <span
+                                        class="text-blue-400">developer</span> = {</p>
                                 <p class="pl-4 text-gray-300">name: <span class="text-green-400">'Jatin'</span>,</p>
-                                <p class="pl-4 text-gray-300">status: <span class="text-green-400">'Open to Work'</span>,</p>
+                                <p class="pl-4 text-gray-300">status: <span class="text-green-400">'Open to
+                                        Work'</span>,</p>
                                 <p class="pl-4 text-gray-300">hireable: <span class="text-pink-500">true</span></p>
                                 <p class="text-gray-400">};</p>
-                             </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -285,132 +373,24 @@
                     <div class="flex items-center gap-4">
                         <h2 class="text-4xl font-bold mb-2 text-white">Featured Works</h2>
                         <!-- Hidden Edit Button (Shows if ?admin=true) -->
-                        <a id="edit-projects-btn" href="edit-projects.html" class="hidden text-xs bg-yellow-600/20 text-yellow-500 px-3 py-1 rounded border border-yellow-600/50 hover:bg-yellow-600/40">Admin Edit</a>
+                        <a id="edit-projects-btn" href="edit-projects.html"
+                            class="hidden text-xs bg-yellow-600/20 text-yellow-500 px-3 py-1 rounded border border-yellow-600/50 hover:bg-yellow-600/40">Admin
+                            Edit</a>
                     </div>
                     <p class="text-gray-400">A selection of my recent code experiments.</p>
                 </div>
-                <a href="https://github.com/jatinprakash555" target="_blank" class="hidden md:flex items-center text-blue-400 hover:text-white transition-colors font-mono text-sm">
+                <a href="https://github.com/jatinprakash555" target="_blank"
+                    class="hidden md:flex items-center text-blue-400 hover:text-white transition-colors font-mono text-sm">
                     git checkout projects <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
                 </a>
             </div>
 
-            <!-- Bento Grid Layout -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[350px]">
-                
-                <!-- Project 1: The Coding Companion (Big Card) -->
-                <div class="md:col-span-2 glass-card rounded-2xl p-8 relative group overflow-hidden flex flex-col justify-between" data-tilt>
-                    <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl -mr-16 -mt-16 transition-all group-hover:bg-blue-500/20"></div>
-                    
-                    <div>
-                        <div class="flex justify-between items-start mb-4">
-                            <span class="bg-blue-500/20 text-blue-300 text-xs font-bold px-3 py-1 rounded-full border border-blue-500/30">FULL STACK</span>
-                            <div class="flex gap-2">
-                                <a href="https://github.com/jatinprakash555/tcc-project" target="_blank" class="p-2 bg-white/5 rounded-full hover:bg-white/20 transition-colors" title="Source Code"><i data-lucide="github" class="w-5 h-5"></i></a>
-                                <a href="https://jatinprakash555.github.io/" target="_blank" class="p-2 bg-blue-600/20 rounded-full hover:bg-blue-600/40 transition-colors text-blue-400" title="Live Demo"><i data-lucide="external-link" class="w-5 h-5"></i></a>
-                            </div>
-                        </div>
-                        <h3 class="text-3xl font-bold text-white mb-2">The Coding Companion</h3>
-                        <p class="text-gray-400 text-sm max-w-md">A collaborative platform for students to share resources and manage projects. Built with the complete MERN stack.</p>
-                    </div>
-
-                    <!-- CSS UI Mockup -->
-                    <div class="mt-6 w-full h-48 bg-[#1e1e1e] rounded-t-xl border border-gray-700 p-3 font-mono text-xs text-gray-400 shadow-2xl translate-y-4 group-hover:translate-y-2 transition-transform">
-                        <div class="flex gap-1.5 mb-3 border-b border-gray-700 pb-2">
-                            <span class="mock-dot bg-red-500"></span><span class="mock-dot bg-yellow-500"></span><span class="mock-dot bg-green-500"></span>
-                        </div>
-                        <div class="space-y-1">
-                            <p><span class="text-purple-400">const</span> <span class="text-blue-400">Project</span> = <span class="text-yellow-300">{</span></p>
-                            <p class="pl-4">name: <span class="text-green-400">'TCC'</span>,</p>
-                            <p class="pl-4">stack: [<span class="text-green-400">'React'</span>, <span class="text-green-400">'Node'</span>, <span class="text-green-400">'MongoDB'</span>],</p>
-                            <p class="pl-4">status: <span class="text-green-400">'Online'</span></p>
-                            <p><span class="text-yellow-300">}</span>;</p>
-                            <p class="text-gray-600">// Empowering students...</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2: Cloud Catcher (Vertical Game Card) -->
-                <div class="md:row-span-2 glass-card rounded-2xl p-8 relative group overflow-hidden flex flex-col" data-tilt>
-                    <div class="absolute top-0 right-0 w-full h-full bg-gradient-to-b from-purple-500/5 to-transparent"></div>
-                    
-                    <div class="flex-grow flex flex-col items-center justify-center py-8">
-                        <!-- CSS Cloud Icon -->
-                        <div class="relative w-24 h-24 mb-6 animate-float">
-                            <i data-lucide="cloud" class="w-24 h-24 text-purple-400 fill-purple-400/20"></i>
-                            <div class="absolute -top-2 -right-2 text-yellow-400 animate-bounce">
-                                <i data-lucide="star" class="w-6 h-6 fill-current"></i>
-                            </div>
-                        </div>
-                        <h3 class="text-2xl font-bold text-center">Cloud Catcher</h3>
-                        <span class="text-xs text-purple-300 mt-1 uppercase tracking-wider">HTML5 Canvas Game</span>
-                    </div>
-                    
-                    <div class="mt-auto">
-                        <p class="text-gray-400 text-sm mb-4 text-center">Retro-style arcade game with custom physics engine.</p>
-                        <div class="grid grid-cols-2 gap-2">
-                             <a href="https://github.com/jatinprakash555/jattinprakash555-cloudcatchergame" target="_blank" class="w-full block text-center py-2 rounded-lg bg-white/5 hover:bg-white/10 text-white border border-white/10 transition-all font-bold text-sm">Code</a>
-                             <a href="https://jatinprakash555.github.io/jattinprakash555-cloudcatchergame/" target="_blank" class="w-full block text-center py-2 rounded-lg bg-purple-600/20 hover:bg-purple-600/40 text-purple-300 border border-purple-500/30 transition-all font-bold text-sm">Play</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3: Multi-Model Canvas -->
-                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between group" data-tilt>
-                    <div>
-                        <div class="w-10 h-10 bg-teal-500/20 rounded-lg flex items-center justify-center mb-4 text-teal-400">
-                            <i data-lucide="pen-tool" class="w-5 h-5"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">Multi-Model Canvas</h3>
-                        <p class="text-gray-400 text-sm mt-2">Real-time whiteboard with drawing & text support.</p>
-                    </div>
-                    <div class="flex items-center justify-between mt-4 pt-4 border-t border-gray-800">
-                        <div class="flex -space-x-2">
-                             <div class="w-6 h-6 rounded-full bg-gray-700 flex items-center justify-center text-[10px] border border-black">JS</div>
-                             <div class="w-6 h-6 rounded-full bg-blue-900 flex items-center justify-center text-[10px] border border-black">FB</div>
-                        </div>
-                        <span class="text-xs text-teal-400 font-mono">v1.0.2</span>
-                    </div>
-                </div>
-
-                <!-- Project 4: Journal -->
-                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between group hover:border-pink-500/50" data-tilt>
-                    <div>
-                         <div class="w-10 h-10 bg-pink-500/20 rounded-lg flex items-center justify-center mb-4 text-pink-400">
-                            <i data-lucide="book" class="w-5 h-5"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">Project Journal</h3>
-                        <p class="text-gray-400 text-sm mt-2">Documenting my dev journey & hackathons.</p>
-                    </div>
-                    <a href="journal.html" class="inline-flex items-center text-sm text-pink-400 hover:text-pink-300 mt-4">
-                        Read Entry <i data-lucide="arrow-right" class="w-3 h-3 ml-1"></i>
-                    </a>
-                </div>
-
-                <!-- Project 5: Neon Retro Racer -->
-                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between group hover:border-cyan-500/50 transition-colors" data-tilt>
-                    <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <div class="relative z-10">
-                        <div class="flex justify-between items-center mb-4">
-                             <div class="w-10 h-10 bg-cyan-500/20 rounded-lg flex items-center justify-center text-cyan-400">
-                                <i data-lucide="car-front" class="w-5 h-5"></i>
-                            </div>
-                             <span class="bg-cyan-500/20 text-cyan-300 text-[10px] font-bold px-2 py-1 rounded border border-cyan-500/30 animate-pulse">NEW</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">Neon Retro Racer</h3>
-                        <p class="text-gray-400 text-sm mt-2">High-speed synthwave racing game built with JavaScript.</p>
-                    </div>
-                    
-                    <div class="mt-4 pt-4 border-t border-gray-800 flex justify-between items-center relative z-10">
-                        <div class="flex gap-2">
-                            <span class="text-xs text-gray-500 border border-gray-700 px-2 py-1 rounded">HTML5</span>
-                            <span class="text-xs text-gray-500 border border-gray-700 px-2 py-1 rounded">JS</span>
-                        </div>
-                        <a href="https://jatinprakash555.github.io/neon_retro_racer/" target="_blank" class="flex items-center gap-2 text-sm font-bold text-cyan-400 hover:text-cyan-300 transition-colors">
-                            Play Now <i data-lucide="play-circle" class="w-4 h-4"></i>
-                        </a>
-                    </div>
-                </div>
-
+            <!-- Bento Grid Layout (Dynamic) -->
+            <div id="projects-container" class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[350px]">
+                <!-- Skeleton Loader / Fallback -->
+                <div class="md:col-span-2 glass animate-pulse rounded-2xl"></div>
+                <div class="glass animate-pulse rounded-2xl"></div>
+                <div class="glass animate-pulse rounded-2xl"></div>
             </div>
         </section>
 
@@ -425,15 +405,18 @@
                     <div class="relative z-10 grid md:grid-cols-2 gap-12">
                         <div>
                             <h2 class="text-4xl font-bold mb-4">Let's Build Something.</h2>
-                            <p class="text-gray-400 mb-8">I'm currently available for freelance work and internships. If you have a project that needs some creative tech, I'm your guy.</p>
-                            
+                            <p class="text-gray-400 mb-8">I'm currently available for freelance work and internships. If
+                                you have a project that needs some creative tech, I'm your guy.</p>
+
                             <div class="space-y-4">
                                 <div class="flex items-center gap-3 text-gray-300">
-                                    <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center"><i data-lucide="mail" class="w-5 h-5"></i></div>
+                                    <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center"><i
+                                            data-lucide="mail" class="w-5 h-5"></i></div>
                                     <span>jatinprakashb5@gmail.com</span>
                                 </div>
                                 <div class="flex items-center gap-3 text-gray-300">
-                                    <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center"><i data-lucide="map-pin" class="w-5 h-5"></i></div>
+                                    <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center"><i
+                                            data-lucide="map-pin" class="w-5 h-5"></i></div>
                                     <span>Odisha, India</span>
                                 </div>
                             </div>
@@ -443,11 +426,16 @@
                             <input type="hidden" name="_subject" value="New Portfolio Contact!">
                             <input type="text" name="_honey" style="display:none">
                             <div class="grid grid-cols-2 gap-4">
-                                <input type="text" name="name" placeholder="Name" required class="w-full bg-black/30 border border-white/10 rounded-lg p-3 text-white focus:outline-none focus:border-blue-500 focus:bg-black/50 transition-all placeholder-gray-500">
-                                <input type="email" name="email" placeholder="Email" required class="w-full bg-black/30 border border-white/10 rounded-lg p-3 text-white focus:outline-none focus:border-blue-500 focus:bg-black/50 transition-all placeholder-gray-500">
+                                <input type="text" name="name" placeholder="Name" required
+                                    class="w-full bg-black/30 border border-white/10 rounded-lg p-3 text-white focus:outline-none focus:border-blue-500 focus:bg-black/50 transition-all placeholder-gray-500">
+                                <input type="email" name="email" placeholder="Email" required
+                                    class="w-full bg-black/30 border border-white/10 rounded-lg p-3 text-white focus:outline-none focus:border-blue-500 focus:bg-black/50 transition-all placeholder-gray-500">
                             </div>
-                            <textarea name="message" rows="4" placeholder="Tell me about your project..." required class="w-full bg-black/30 border border-white/10 rounded-lg p-3 text-white focus:outline-none focus:border-blue-500 focus:bg-black/50 transition-all placeholder-gray-500"></textarea>
-                            <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold py-3.5 rounded-lg hover:shadow-lg hover:opacity-90 transition-all transform hover:-translate-y-1">Send Message</button>
+                            <textarea name="message" rows="4" placeholder="Tell me about your project..." required
+                                class="w-full bg-black/30 border border-white/10 rounded-lg p-3 text-white focus:outline-none focus:border-blue-500 focus:bg-black/50 transition-all placeholder-gray-500"></textarea>
+                            <button type="submit"
+                                class="w-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold py-3.5 rounded-lg hover:shadow-lg hover:opacity-90 transition-all transform hover:-translate-y-1">Send
+                                Message</button>
                         </form>
                     </div>
                 </div>
@@ -458,43 +446,56 @@
     <footer class="border-t border-gray-800 py-8 text-center text-gray-500 text-sm bg-[#050505]">
         <p>&copy; 2024 Jatin Prakash Behera. All Rights Reserved.</p>
         <div class="flex justify-center gap-4 mt-4">
-            <a href="https://github.com/jatinprakash555" target="_blank" class="hover:text-white transition-colors"><i data-lucide="github" class="w-5 h-5"></i></a>
-            <a href="https://www.linkedin.com/in/jatin-prakash-0686a132" target="_blank" class="hover:text-white transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
-            <a href="https://twitter.com/jatinprakashb5" target="_blank" class="hover:text-white transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+            <a href="https://github.com/jatinprakash555" target="_blank" class="hover:text-white transition-colors"><i
+                    data-lucide="github" class="w-5 h-5"></i></a>
+            <a href="https://www.linkedin.com/in/jatin-prakash-0686a132" target="_blank"
+                class="hover:text-white transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+            <a href="https://twitter.com/jatinprakashb5" target="_blank" class="hover:text-white transition-colors"><i
+                    data-lucide="twitter" class="w-5 h-5"></i></a>
         </div>
     </footer>
 
     <!-- Cyber Chatbot -->
     <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
         <!-- Chat Window -->
-        <div id="chat-window" class="glass w-80 mb-4 rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 transform origin-bottom-right scale-0 opacity-0">
+        <div id="chat-window"
+            class="glass w-80 mb-4 rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 transform origin-bottom-right scale-0 opacity-0">
             <div class="bg-gradient-to-r from-blue-600 to-cyan-600 p-4 flex justify-between items-center">
-                <span class="font-bold text-white flex items-center gap-2"><i data-lucide="bot" class="w-5 h-5"></i> Cyber Assistant</span>
-                <button id="close-chat" class="text-white/80 hover:text-white"><i data-lucide="x" class="w-4 h-4"></i></button>
+                <span class="font-bold text-white flex items-center gap-2"><i data-lucide="bot" class="w-5 h-5"></i>
+                    Cyber Assistant</span>
+                <button id="close-chat" class="text-white/80 hover:text-white"><i data-lucide="x"
+                        class="w-4 h-4"></i></button>
             </div>
             <div id="chat-messages" class="h-64 overflow-y-auto p-4 space-y-3 bg-black/40 scroll-smooth">
                 <div class="flex justify-start">
-                    <div class="bg-white/10 text-gray-200 p-3 rounded-lg rounded-tl-none max-w-[85%] text-sm border border-white/5">
+                    <div
+                        class="bg-white/10 text-gray-200 p-3 rounded-lg rounded-tl-none max-w-[85%] text-sm border border-white/5">
                         Hello! I'm Jatin's AI Assistant. Ask me about his skills or projects!
                     </div>
                 </div>
                 <!-- Quick Options -->
                 <div class="flex flex-wrap gap-2 mt-2">
-                    <button onclick="sendQuickMsg('Skills?')" class="text-xs bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2 py-1 rounded-full hover:bg-blue-500/40 transition-colors">Skills</button>
-                    <button onclick="sendQuickMsg('Projects?')" class="text-xs bg-purple-500/20 text-purple-300 border border-purple-500/30 px-2 py-1 rounded-full hover:bg-purple-500/40 transition-colors">Projects</button>
-                    <button onclick="sendQuickMsg('Contact?')" class="text-xs bg-green-500/20 text-green-300 border border-green-500/30 px-2 py-1 rounded-full hover:bg-green-500/40 transition-colors">Contact</button>
+                    <button onclick="sendQuickMsg('Skills?')"
+                        class="text-xs bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2 py-1 rounded-full hover:bg-blue-500/40 transition-colors">Skills</button>
+                    <button onclick="sendQuickMsg('Projects?')"
+                        class="text-xs bg-purple-500/20 text-purple-300 border border-purple-500/30 px-2 py-1 rounded-full hover:bg-purple-500/40 transition-colors">Projects</button>
+                    <button onclick="sendQuickMsg('Contact?')"
+                        class="text-xs bg-green-500/20 text-green-300 border border-green-500/30 px-2 py-1 rounded-full hover:bg-green-500/40 transition-colors">Contact</button>
                 </div>
             </div>
             <div class="p-3 bg-black/60 border-t border-white/10">
                 <form id="chat-form" class="flex gap-2">
-                    <input type="text" id="chat-input" placeholder="Type..." class="flex-1 bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500">
-                    <button type="submit" class="bg-blue-600 p-2 rounded-lg hover:bg-blue-700 transition-colors"><i data-lucide="send" class="w-4 h-4 text-white"></i></button>
+                    <input type="text" id="chat-input" placeholder="Type..."
+                        class="flex-1 bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500">
+                    <button type="submit" class="bg-blue-600 p-2 rounded-lg hover:bg-blue-700 transition-colors"><i
+                            data-lucide="send" class="w-4 h-4 text-white"></i></button>
                 </form>
             </div>
         </div>
 
         <!-- Toggle Button -->
-        <button id="chat-toggle" class="bg-blue-600 hover:bg-blue-500 text-white p-4 rounded-full shadow-lg shadow-blue-600/30 transition-all hover:scale-110 active:scale-95 group">
+        <button id="chat-toggle"
+            class="bg-blue-600 hover:bg-blue-500 text-white p-4 rounded-full shadow-lg shadow-blue-600/30 transition-all hover:scale-110 active:scale-95 group">
             <i data-lucide="message-square" class="w-6 h-6 group-hover:rotate-12 transition-transform"></i>
         </button>
     </div>
@@ -507,7 +508,7 @@
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.get('admin') === 'true') {
                 const editBtn = document.getElementById('edit-projects-btn');
-                if(editBtn) editBtn.classList.remove('hidden');
+                if (editBtn) editBtn.classList.remove('hidden');
             }
 
             // --- 2. 3D Tilt Effect Logic (Restored) ---
@@ -529,11 +530,11 @@
 
 
             // --- 3. UI Interactions ---
-            
+
             // Mobile Menu
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
-            
+
             mobileMenuBtn.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
                 const icon = mobileMenu.classList.contains('hidden') ? 'menu' : 'x';
@@ -546,11 +547,11 @@
             const body = document.body;
             let isCyber = localStorage.getItem('theme') === 'cyber';
 
-            if(isCyber) enableCyberMode();
+            if (isCyber) enableCyberMode();
 
             themeToggle.addEventListener('click', () => {
                 isCyber = !isCyber;
-                if(isCyber) {
+                if (isCyber) {
                     enableCyberMode();
                     localStorage.setItem('theme', 'cyber');
                 } else {
@@ -580,7 +581,7 @@
 
             function type() {
                 const currentPhrase = phrases[phraseIndex];
-                
+
                 if (isDeleting) {
                     typeTarget.textContent = currentPhrase.substring(0, charIndex - 1);
                     charIndex--;
@@ -602,72 +603,194 @@
             }
             type();
 
-            // Chatbot Logic
-            const chatToggle = document.getElementById('chat-toggle');
-            const chatWindow = document.getElementById('chat-window');
-            const closeChat = document.getElementById('close-chat');
-            const chatForm = document.getElementById('chat-form');
-            const chatInput = document.getElementById('chat-input');
-            const chatMessages = document.getElementById('chat-messages');
+            // --- 4. Dynamic Projects Logic ---
+            const STORAGE_KEY = 'portfolioProjects';
+            const projectsContainer = document.getElementById('projects-container');
 
-            function toggleChat() {
-                chatWindow.classList.toggle('scale-0');
-                chatWindow.classList.toggle('opacity-0');
+            function getInitialProjects() {
+                return [
+                    {
+                        id: 1,
+                        title: "The Coding Companion",
+                        category: "FULL STACK",
+                        description: "A collaborative platform for students to share resources and manage projects. Built with the complete MERN stack.",
+                        tags: ["React", "Node", "MongoDB"],
+                        liveUrl: "https://jatinprakash555.github.io/",
+                        sourceUrl: "https://github.com/jatinprakash555/tcc-project",
+                        layout: "wide",
+                        icon: "code"
+                    },
+                    {
+                        id: 2,
+                        title: "Cloud Catcher",
+                        category: "HTML5 GAME",
+                        description: "Retro-style arcade game with custom physics engine.",
+                        tags: ["Canvas", "JS"],
+                        liveUrl: "https://jatinprakash555.github.io/jattinprakash555-cloudcatchergame/",
+                        sourceUrl: "https://github.com/jatinprakash555/jattinprakash555-cloudcatchergame",
+                        layout: "tall",
+                        icon: "cloud"
+                    },
+                    {
+                        id: 3,
+                        title: "Multi-Model Canvas",
+                        category: "TOOL",
+                        description: "Real-time whiteboard with drawing & text support.",
+                        tags: ["JS", "Firebase"],
+                        liveUrl: "#",
+                        sourceUrl: "#",
+                        layout: "standard",
+                        icon: "pen-tool"
+                    },
+                    {
+                        id: 4,
+                        title: "Project Journal",
+                        category: "DOCS",
+                        description: "Documenting my dev journey & hackathons.",
+                        tags: ["Writing", "DevLog"],
+                        liveUrl: "journal.html",
+                        sourceUrl: "#",
+                        layout: "standard",
+                        icon: "book"
+                    },
+                    {
+                        id: 5,
+                        title: "Neon Retro Racer",
+                        category: "GAME",
+                        description: "High-speed synthwave racing game built with JavaScript.",
+                        tags: ["HTML5", "JS"],
+                        liveUrl: "https://jatinprakash555.github.io/neon_retro_racer/",
+                        sourceUrl: "#",
+                        layout: "standard",
+                        icon: "car-front"
+                    }
+                ];
             }
 
-            chatToggle.addEventListener('click', toggleChat);
-            closeChat.addEventListener('click', toggleChat);
+            function loadProjects() {
+                let projects = JSON.parse(localStorage.getItem(STORAGE_KEY));
 
-            window.sendQuickMsg = (msg) => {
-                addMessage(msg, 'user');
-                processBotResponse(msg);
-            };
-
-            chatForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const msg = chatInput.value.trim();
-                if(!msg) return;
-                addMessage(msg, 'user');
-                chatInput.value = '';
-                processBotResponse(msg);
-            });
-
-            function addMessage(text, sender) {
-                const div = document.createElement('div');
-                div.className = `flex ${sender === 'user' ? 'justify-end' : 'justify-start'}`;
-                const bubble = document.createElement('div');
-                
-                if(sender === 'user') {
-                    bubble.className = 'bg-blue-600 text-white p-3 rounded-lg rounded-tr-none max-w-[85%] text-sm';
-                } else {
-                    bubble.className = 'bg-white/10 text-gray-200 p-3 rounded-lg rounded-tl-none max-w-[85%] text-sm border border-white/5';
+                // Initial migration if empty
+                if (!projects || projects.length === 0) {
+                    projects = getInitialProjects();
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(projects));
                 }
-                
-                bubble.textContent = text;
-                div.appendChild(bubble);
-                chatMessages.appendChild(div);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
+
+                renderDynamicProjects(projects);
             }
 
-            function processBotResponse(msg) {
-                setTimeout(() => {
-                    let reply = "I'm still learning! Try asking about 'Skills' or 'Projects'.";
-                    msg = msg.toLowerCase();
+            function renderDynamicProjects(projects) {
+                if (!projectsContainer) return;
+                projectsContainer.innerHTML = '';
 
-                    if(msg.includes('skill') || msg.includes('stack')) {
-                        reply = "Jatin is proficient in React, Node.js, MongoDB, Tailwind CSS, and Figma.";
-                    } else if(msg.includes('project')) {
-                        reply = "Check out the projects section! He's built a Coding Platform (TCC) and a Cloud Catcher game.";
-                    } else if(msg.includes('contact') || msg.includes('email') || msg.includes('hire')) {
-                        reply = "You can email him at jatinprakashb5@gmail.com or use the contact form below.";
-                    } else if(msg.includes('hello') || msg.includes('hi')) {
-                        reply = "Hello! Ready to explore the portfolio?";
+                projects.forEach(p => {
+                    const card = document.createElement('div');
+
+                    // Layout Classes
+                    let layoutClasses = "glass-card rounded-2xl p-6 flex flex-col justify-between group relative overflow-hidden";
+                    if (p.layout === 'wide') layoutClasses = "md:col-span-2 glass-card rounded-2xl p-8 relative group overflow-hidden flex flex-col justify-between";
+                    if (p.layout === 'tall') layoutClasses = "md:row-span-2 glass-card rounded-2xl p-8 relative group overflow-hidden flex flex-col";
+
+                    card.className = layoutClasses;
+                    card.setAttribute('data-tilt', '');
+
+                    if (p.layout === 'wide') {
+                        card.innerHTML = `
+                            <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl -mr-16 -mt-16 transition-all group-hover:bg-blue-500/20"></div>
+                            <div>
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="bg-blue-500/20 text-blue-300 text-xs font-bold px-3 py-1 rounded-full border border-blue-500/30">${p.category}</span>
+                                    <div class="flex gap-2">
+                                        ${p.sourceUrl !== '#' ? `<a href="${p.sourceUrl}" target="_blank" class="p-2 bg-white/5 rounded-full hover:bg-white/20 transition-colors" title="Source Code"><i data-lucide="github" class="w-5 h-5"></i></a>` : ''}
+                                        ${p.liveUrl !== '#' ? `<a href="${p.liveUrl}" target="_blank" class="p-2 bg-blue-600/20 rounded-full hover:bg-blue-600/40 transition-colors text-blue-400" title="Live Demo"><i data-lucide="external-link" class="w-5 h-5"></i></a>` : ''}
+                                    </div>
+                                </div>
+                                <h3 class="text-3xl font-bold text-white mb-2">${p.title}</h3>
+                                <p class="text-gray-400 text-sm max-w-md">${p.description}</p>
+                            </div>
+                            <div class="mt-6 w-full h-48 bg-[#1e1e1e] rounded-t-xl border border-gray-700 p-3 font-mono text-xs text-gray-400 shadow-2xl translate-y-4 group-hover:translate-y-2 transition-transform">
+                                <div class="flex gap-1.5 mb-3 border-b border-gray-700 pb-2">
+                                    <span class="mock-dot bg-red-500"></span><span class="mock-dot bg-yellow-500"></span><span class="mock-dot bg-green-500"></span>
+                                </div>
+                                <div class="space-y-1">
+                                    <p><span class="text-purple-400">const</span> <span class="text-blue-400">${p.title.replace(/\s+/g, '')}</span> = <span class="text-yellow-300">{</span></p>
+                                    <p class="pl-4">tags: [${p.tags.map(t => `'${t}'`).join(', ')}],</p>
+                                    <p class="pl-4">status: <span class="text-green-400">'Live'</span></p>
+                                    <p><span class="text-yellow-300">}</span>;</p>
+                                </div>
+                            </div>
+                        `;
+                    } else if (p.layout === 'tall') {
+                        card.innerHTML = `
+                            <div class="absolute top-0 right-0 w-full h-full bg-gradient-to-b from-purple-500/5 to-transparent"></div>
+                            <div class="flex-grow flex flex-col items-center justify-center py-8">
+                                <div class="relative w-24 h-24 mb-6 animate-float">
+                                    <i data-lucide="${p.icon || 'layers'}" class="w-24 h-24 text-purple-400 fill-purple-400/20"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold text-center">${p.title}</h3>
+                                <span class="text-xs text-purple-300 mt-1 uppercase tracking-wider">${p.category}</span>
+                            </div>
+                            <div class="mt-auto">
+                                <p class="text-gray-400 text-sm mb-4 text-center">${p.description}</p>
+                                <div class="grid grid-cols-2 gap-2">
+                                     <a href="${p.sourceUrl}" target="_blank" class="w-full block text-center py-2 rounded-lg bg-white/5 hover:bg-white/10 text-white border border-white/10 transition-all font-bold text-sm">Code</a>
+                                     <a href="${p.liveUrl}" target="_blank" class="w-full block text-center py-2 rounded-lg bg-purple-600/20 hover:bg-purple-600/40 text-purple-300 border border-purple-500/30 transition-all font-bold text-sm">Live</a>
+                                </div>
+                            </div>
+                        `;
+                    } else {
+                        card.innerHTML = `
+                            <div>
+                                <div class="flex justify-between items-center mb-4">
+                                     <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center text-blue-400">
+                                        <i data-lucide="${p.icon || 'layers'}" class="w-5 h-5"></i>
+                                    </div>
+                                    <div class="flex gap-2">
+                                        ${p.sourceUrl !== '#' ? `<a href="${p.sourceUrl}" target="_blank" class="text-gray-500 hover:text-white"><i data-lucide="github" class="w-4 h-4"></i></a>` : ''}
+                                        ${p.liveUrl !== '#' ? `<a href="${p.liveUrl}" target="_blank" class="text-blue-400 hover:text-blue-300"><i data-lucide="external-link" class="w-4 h-4"></i></a>` : ''}
+                                    </div>
+                                </div>
+                                <h3 class="text-xl font-bold text-white">${p.title}</h3>
+                                <p class="text-gray-400 text-sm mt-2">${p.description}</p>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-gray-800 flex flex-wrap gap-2">
+                                ${p.tags.map(t => `<span class="text-[10px] text-gray-500 border border-gray-700 px-2 py-0.5 rounded">${t}</span>`).join('')}
+                            </div>
+                        `;
                     }
 
-                    addMessage(reply, 'bot');
-                }, 600);
+                    projectsContainer.appendChild(card);
+                });
+
+                // Re-initialize Lucide Icons
+                lucide.createIcons();
+
+                // Re-initialize Tilt Effect
+                initTilt();
             }
+
+            function initTilt() {
+                const cards = document.querySelectorAll('[data-tilt]');
+                cards.forEach(card => {
+                    card.addEventListener('mousemove', (e) => {
+                        const rect = card.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        const { width, height } = rect;
+                        const rotateX = (y / height - 0.5) * -10;
+                        const rotateY = (x / width - 0.5) * 10;
+                        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                    });
+                    card.addEventListener('mouseleave', () => {
+                        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+                    });
+                });
+            }
+
+            // Load on start
+            loadProjects();
         });
     </script>
 </body>
+
 </html>
